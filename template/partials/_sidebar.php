@@ -33,6 +33,32 @@
             </a>
           </li>
 
+
+          <li class="nav-item">
+            <a class="nav-link" href="accountsreport.php">
+            <i class="typcn typcn-document-text menu-icon"></i>
+            <span class="menu-title">Accounts Reports</span>
+              <!-- <div class="badge badge-danger">new</div> -->
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="accountsmaster.php">
+            <i class="typcn typcn-document-text menu-icon"></i>
+            <span class="menu-title">Accounts Master</span>
+              <!-- <div class="badge badge-danger">new</div> -->
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="voucher.php">
+            <i class="typcn typcn-document-text menu-icon"></i>
+            <span class="menu-title">Voucher</span>
+              <!-- <div class="badge badge-danger">new</div> -->
+            </a>
+          </li>
+          
+
           <li class="nav-item">
             <a class="nav-link" href="Outstanding.php">
             <i class="typcn typcn-document-text menu-icon"></i>
@@ -45,14 +71,6 @@
             <a class="nav-link" href="closedloan.php">
             <i class="typcn typcn-document-text menu-icon"></i>
             <span class="menu-title">closed Loan</span>
-              <!-- <div class="badge badge-danger">new</div> -->
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="accountsreport.php">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Accounts Reports</span>
               <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
@@ -94,7 +112,7 @@
                 <li class="nav-item"> <a class="nav-link" href="pages/charts/chartjs.html">ChartJs</a></li>
               </ul>
             </div>
-          </li>
+          </li>-->
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
               <i class="typcn typcn-th-small-outline menu-icon"></i>
@@ -107,7 +125,7 @@
               </ul>
             </div>
           </li>
-          <li class="nav-item">
+         <!-- <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#icons" aria-expanded="false" aria-controls="icons">
               <i class="typcn typcn-compass menu-icon"></i>
               <span class="menu-title">Outstanding</span>

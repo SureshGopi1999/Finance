@@ -31,17 +31,17 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item nav-date dropdown">
+          <!-- <li class="nav-item nav-date dropdown">
             <a class="nav-link d-flex justify-content-center align-items-center" href="javascript:;">
               <h6 class="date mb-0">Today : Mar 23</h6>
               <i class="typcn typcn-calendar"></i>
             </a>
-          </li>
-          <li class="nav-item dropdown">
+          </li> -->
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
               <i class="typcn typcn-cog-outline mx-0"></i>
               <span class="count"></span>
-            </a>
+            </a> -->
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Messages</p>
               <a class="dropdown-item preview-item">
@@ -83,11 +83,11 @@
             </div>
           </li>
           <li class="nav-item dropdown mr-0">
-            <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
+            <!-- <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="typcn typcn-bell mx-0"></i>
               <span class="count"></span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+            </a> -->
+            <!-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
               <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
               <a class="dropdown-item preview-item">
                 <div class="preview-thumbnail">
@@ -134,7 +134,7 @@
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="typcn typcn-th-menu"></span>
         </button>
-      </div>
+      </div> -->
     </nav>
 
 
@@ -163,22 +163,22 @@
           </li>
           <li class="nav-item">
             <div class="d-flex align-items-baseline">
-              <p class="mb-0">Home</p>
+              <p class="mb-0"></p>
               <i class="typcn typcn-chevron-right"></i>
-              <p class="mb-0">Main Dahboard</p>
+              <p class="mb-0"></p>
             </div>
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-search d-none d-md-block mr-0">
-            <div class="input-group">
+            <!-- <div class="input-group">
               <input type="text" class="form-control" placeholder="Search..." aria-label="search" aria-describedby="search">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="search">
                   <i class="typcn typcn-zoom"></i>
                 </span>
               </div>
-            </div>
+            </div> -->
           </li>
         </ul>
       </div>
