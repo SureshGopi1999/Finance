@@ -232,176 +232,122 @@ include("partials/_navbar.php");
 <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Striped Table</h4>
-                  <p class="card-description">
+                  <h4 class="card-title">VOUCHER</h4>
+
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nav class="nav"><a class="nav-link active" aria-current="page" href="search.php">List</a></nav>
+
+                  <!-- <p class="card-description">
                     Add class <code>.table-striped</code>
-                  </p>
+                  </p> -->
+                  
                   <div class="table-responsive">
-                    <table class="table table-striped">
+<!-- form data opening-->
+                  <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Voucher Type</label>
+                          <div class="col-sm-9">
+                            <select class="form-control" name="balancesheet">
+                              <option value="">PAYMENT</option>
+                              <option value="">RECEIPT</option>
+                              <option value="">PURCHASE</option>
+                              <option value="">SALES</option>
+                              <option value="">JOURNAL</option>
+                              <option value="">CREDIT</option>
+                              <option value="">DEBIT</option>
+                              <option value="">CONTRA</option>
+                              
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                     
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Voucher No</label>
+                          <div class="col-sm-3">
+                            <input type="text" name="presentaddress" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Voucher Date</label>
+                          <div class="col-sm-9">
+                            <input type="date" name="date" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Cost Center</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="district" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+<!-- form data close -->
+
+<div class="table-responstive pt-3">
+<table class="table table-bordered">
                       <thead>
                         <tr>
                           <th>
-                            User
+                          Dr/Cr
                           </th>
                           <th>
-                            First name
+                            Ledger Name
                           </th>
                           <th>
-                            Progress
+                            Debit
                           </th>
                           <th>
-                            Amount
+                            Credit
                           </th>
                           <th>
-                            Deadline
+                            Opening Balance
                           </th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces/face1.jpg" alt="image"/>
-                          </td>
-                          <td>
-                            Herman Beck
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces/face2.jpg" alt="image"/>
-                          </td>
-                          <td>
-                            Messsy Adam
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $245.30
-                          </td>
-                          <td>
-                            July 1, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces/face3.jpg" alt="image"/>
-                          </td>
-                          <td>
-                            John Richards
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $138.00
-                          </td>
-                          <td>
-                            Apr 12, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces/face4.jpg" alt="image"/>
-                          </td>
-                          <td>
-                            Peter Meggik
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 77.99
-                          </td>
-                          <td>
-                            May 15, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces/face5.jpg" alt="image"/>
-                          </td>
-                          <td>
-                            Edward
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 160.25
-                          </td>
-                          <td>
-                            May 03, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces/face6.jpg" alt="image"/>
-                          </td>
-                          <td>
-                            John Doe
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 123.21
-                          </td>
-                          <td>
-                            April 05, 2015
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            <img src="../../images/faces/face7.jpg" alt="image"/>
-                          </td>
-                          <td>
-                            Henry Tom
-                          </td>
-                          <td>
-                            <div class="progress">
-                              <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                          </td>
-                          <td>
-                            $ 150.00
-                          </td>
-                          <td>
-                            June 16, 2015
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    
+</div>
+<tbody>
+  <tr>
+    <td><input type="text" name="name" id="name"></td>
+    <td><input type="text" name="name" id="name"></td>
+    <td><input type="text" name="name" id="name"></td>
+    <td><input type="text" name="name" id="name"></td>
+    <td><input type="text" name="name" id="name"></td>
+</tr>
+<tr>
+<td><input type="text" name="name" id="name"></td>
+    <td><input type="text" name="name" id="name"></td>
+    <td><input type="text" name="name" id="name"></td>
+    <td><input type="text" name="name" id="name"></td>
+    <td><input type="text" name="name" id="name"></td>
+</tr>
+</tbody>
+</table>
+
                   </div>
                 </div>
+                <br>
+                <label>Narration</label><input type="text" name="" id="">
+              <center>  <button type="btn" name="" class="btn btn-primary mb-2">Submit</button>
+            <button type="" class="btn btn-info mb-2">Refresh</button></center>
               </div>
             </div>
+             
 
 
 
-
-            <div class="col-lg-12 grid-margin stretch-card">
+            <!-- <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Bordered table</h4>
@@ -574,7 +520,7 @@ include("partials/_navbar.php");
             </div>
 
             </div>
-            </div>
+            </div> -->
 </div>
 </div>
                     

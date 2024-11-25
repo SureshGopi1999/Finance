@@ -222,12 +222,13 @@ include("partials/_navbar.php");
           
         </ul>
       </nav>
+      
       <!------>
       <div class="col-10 grid-margin">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">CUSTOMER REGISTERATION</h4>
-                  <form class="form-sample">
+                  <form class="form-sample" action="insert.php" method="POST">
                     <p class="card-description">
                       
                     </p>
@@ -236,39 +237,26 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">CustomerID</label>
                           <div class="col-sm-9">
-                            <input type="text" name="customer_id" class="form-control" />
+                            <input type="text" name="customer_id" class="form-control" placeholder="CustomerID"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                        &nbsp;&nbsp;&nbsp; <label class="form-check-label" for="flexCheckDefault">
-                         Dont Give Loan
-                        </label>
-                          <div class="col-sm-2">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input class="form-check-input" type="checkbox"  name="dontgiveloan" value="" id="flexCheckDefault">                   
-                               </div>
+                          <label class="col-sm-3 col-form-label">Loan No</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="loanno" class="form-control" placeholder="Loan No"/>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <!-- <div class="col-md-6">
-                    <div class="form-group row">
-                    <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
-    Report Wise
-  </label>
-</div>
-</div>
-</div> -->
-
+                    
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Ledger Name</label>
                           <div class="col-sm-9">
-                            <input type="text" name="ledgername" class="form-control" />
+                            <input type="text" name="ledgername" class="form-control" placeholder="Ledger Name"/>
                           </div>
                         </div>
                       </div>
@@ -276,7 +264,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Tamil Name</label>
                           <div class="col-sm-9">
-                            <input type="text" name="tamilname" class="form-control" />
+                            <input type="text" name="tamilname" class="form-control" placeholder="Tamil Name"/>
                           </div>
                         </div>
                       </div>
@@ -286,7 +274,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Date of Brith</label>
                           <div class="col-sm-9">
-                          <input type="text"  name="dateofbrith" class="form-control" />
+                          <input type="date"  name="dateofbrith" class="form-control" placeholder="date"/>
                             <!-- <select class="form-control">
                               <option>Male</option>
                               <option>Female</option>
@@ -298,7 +286,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Age</label>
                           <div class="col-sm-9">
-                            <input class="form-control" name="age" placeholder="dd/mm/yyyy"/>
+                            <input class="form-control" name="age" placeholder="AGE"/>
                           </div>
                         </div>
                       </div>
@@ -309,10 +297,10 @@ include("partials/_navbar.php");
                           <label class="col-sm-3 col-form-label">Balance Sheet Group</label>
                           <div class="col-sm-9">
                             <select class="form-control" name="balancesheet">
-                              <option value="">Category1</option>
-                              <option value="">Category2</option>
+                              <option value="loancustomer">LOAN CUSTOMER</option>
+                              <!-- <option value="">Category2</option>
                               <option value="">Category3</option>
-                              <option value="">Category4</option>
+                              <option value="">Category4</option> -->
                             </select>
                           </div>
                         </div>
@@ -322,7 +310,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Present Address</label>
                           <div class="col-sm-9">
-                            <input type="text" name="presentaddress" class="form-control" />
+                            <input type="text" name="presentaddress" class="form-control" placeholder="Present Address">
                           </div>
                         </div>
                       </div>
@@ -332,7 +320,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Permanent Address</label>
                           <div class="col-sm-9">
-                            <input type="text" name="permanetaddress" class="form-control" />
+                            <input type="text" name="permanetaddress" class="form-control" placeholder="Permanent Address"/>
                           </div>
                         </div>
                       </div>
@@ -341,7 +329,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">District</label>
                           <div class="col-sm-9">
-                            <input type="text" name="district" class="form-control" />
+                            <input type="text" name="district" class="form-control" placeholder="District"/>
                           </div>
                         </div>
                       </div>
@@ -351,7 +339,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">State</label>
                           <div class="col-sm-9">
-                            <input type="text" name="state" class="form-control" />
+                            <input type="text" name="state" class="form-control" placeholder="State"/>
                           </div>
                         </div>
                       </div>
@@ -359,7 +347,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Phone Number</label>
                           <div class="col-sm-9">
-                            <input type="text" name="phone" class="form-control" />
+                            <input type="text" name="phone" class="form-control" placeholder="Phone Number"/>
                           </div>
                         </div>
                       </div>
@@ -369,7 +357,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Guarander Details</label>
                           <div class="col-sm-9">
-                            <input type="text" name="guranderdetails" class="form-control" />
+                            <input type="text" name="guranderdetails" class="form-control" placeholder="Gurander Details"/>
                           </div>
                         </div>
                       </div>
@@ -377,12 +365,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Reference By</label>
                           <div class="col-sm-9">
-                            <select class="form-control" name="referenceby">
-                              <option value="">select</option>
-                              <option value="">Italy</option>
-                              <option value="">Russia</option>
-                              <option value="">Britain</option>
-                            </select>
+                            <input type="text" name="referenceby" class="form-control" placeholder="Reference By"/>
                           </div>
                         </div>
                       </div>
@@ -392,7 +375,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Reference Detailed</label>
                           <div class="col-sm-9">
-                            <input type="text" name="referencedetailed" class="form-control" />
+                            <input type="text" name="referencedetailed" class="form-control" placeholder="Reference Detailed"/>
                           </div>
                         </div>
                       </div>
@@ -416,7 +399,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">ID Proof No</label>
                           <div class="col-sm-9">
-                            <input type="text" name="idproofno" class="form-control" />
+                            <input type="text" name="idproofno" class="form-control" placeholder="ID Proof No"/>
                           </div>
                         </div>
                       </div>
@@ -431,13 +414,13 @@ include("partials/_navbar.php");
                     </div> 
                     <br>
                     <br>
-                   <center> <button type="submit" name="insert.php" class="btn btn-primary mb-2">Submit</button>
-                    <button type="submit" class="btn btn-info mb-2">Refresh</button></center>
+                   <center> <button type="submit" name="insert" class="btn btn-primary mb-2">Submit</button>
+                    <button type="" class="btn btn-info mb-2">Refresh</button></center>
 
                     
 </div>
 </div>
-
+</form>
 
 
                     

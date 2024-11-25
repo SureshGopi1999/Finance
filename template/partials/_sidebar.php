@@ -1,34 +1,51 @@
- <!-- partial:partials/_sidebar.html -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">  -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<!-- partial:partials/_sidebar.html -->
  <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
             <a class="nav-link" href="index.php">
-              <i class="typcn typcn-device-desktop menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
-              <div class="badge badge-danger">new</div>
+              <!-- <i class="typcn typcn-device-desktop menu-icon"></i> -->
+              <span class="material-symbols-outlined">
+computer
+</span>
+&nbsp;&nbsp;&nbsp;&nbsp; <span class="menu-title">Dashboard</span>
+              <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="newcustomer.php">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">New Customer</span>
+            <!-- <i class="typcn typcn-document-text menu-icon"></i> -->
+            <!-- <i class="bi bi-person-fill-add"></i> -->
+            <span class="material-symbols-outlined">
+person_add
+</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="menu-title">New Customer</span>
               <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="interestloan.php">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Interest Loan</span>
+            <!-- <i class="typcn typcn-document-text menu-icon"></i> -->
+            <span class="material-symbols-outlined">
+percent
+</span>
+            <i class="bi bi-percent"></i>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span class="menu-title">Interest Loan</span>
               <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="receiptentry.php">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Receipt Entry</span>
+            <!-- <i class="typcn typcn-document-text menu-icon"></i> -->
+            <span class="material-symbols-outlined">
+receipt
+</span>
+&nbsp;&nbsp;&nbsp;&nbsp; <span class="menu-title">Receipt Entry</span>
               <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
@@ -36,24 +53,33 @@
 
           <li class="nav-item">
             <a class="nav-link" href="accountsreport.php">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Accounts Reports</span>
+            <!-- <i class="typcn typcn-document-text menu-icon"></i> -->
+            <span class="material-symbols-outlined">
+lab_profile
+</span>
+&nbsp;&nbsp;&nbsp;&nbsp; <span class="menu-title">Accounts Reports</span>
               <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="accountsmaster.php">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Accounts Master</span>
+            <!-- <i class="typcn typcn-document-text menu-icon"></i> -->
+            <span class="material-symbols-outlined">
+group
+</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="menu-title">Accounts Master</span>
               <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="voucher.php">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Voucher</span>
+            <!-- <i class="typcn typcn-document-text menu-icon"></i> -->
+            <span class="material-symbols-outlined">
+folder_open
+</span>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="menu-title">Voucher</span>
               <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
@@ -61,16 +87,33 @@
 
           <li class="nav-item">
             <a class="nav-link" href="Outstanding.php">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">Out Standing</span>
+            <!-- <i class="typcn typcn-document-text menu-icon"></i> -->
+            <span class="material-symbols-outlined">
+library_books
+</span>
+&nbsp;&nbsp;&nbsp;&nbsp;  <span class="menu-title">Out Standing</span>
+              <!-- <div class="badge badge-danger">new</div> -->
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="closedloanreport.php">
+            <!-- <i class="typcn typcn-document-text menu-icon"></i> -->
+            <span class="material-symbols-outlined">
+checkbook
+</span>
+&nbsp;&nbsp;&nbsp;&nbsp; <span class="menu-title">Closed Loan Report </span>
               <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="closedloan.php">
-            <i class="typcn typcn-document-text menu-icon"></i>
-            <span class="menu-title">closed Loan</span>
+            <!-- <i class="typcn typcn-document-text menu-icon"></i> -->
+            <span class="material-symbols-outlined">
+book_2
+</span>
+&nbsp;&nbsp;&nbsp;&nbsp; <span class="menu-title">Closed Loan  </span>
               <!-- <div class="badge badge-danger">new</div> -->
             </a>
           </li>
