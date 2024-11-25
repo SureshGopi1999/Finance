@@ -227,6 +227,13 @@ include("partials/_navbar.php");
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Interest Details</h4>
+                  <nav class="navbar bg-body-tertiary">
+  <form class="container-fluid justify-content-start">
+    <a href="principalpaiddetails.php"><button class="btn btn-sm btn-outline-secondary me-2" type="button">PRINCIPAL PAID DETAILS</a></button>
+    <a href="chittai.php"><button class="btn btn-sm btn-outline-secondary me-2" type="button">CHITTAI</a></button>
+
+  </form>
+</nav>
                   <!-- <p class="card-description">
                     Add class <code>.table</code>
                   </p> -->

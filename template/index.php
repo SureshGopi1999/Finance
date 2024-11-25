@@ -292,7 +292,7 @@ include("partials/_navbar.php");
                 </div>
               </div>
             </div>
-            <div class="col-xl-6 grid-margin stretch-card flex-column">
+            <!-- <div class="col-xl-6 grid-margin stretch-card flex-column">
               <h5 class="mb-2 text-titlecase mb-4">Income statistics</h5>
               <div class="row h-100">
                 <div class="col-md-12 stretch-card">
@@ -310,10 +310,10 @@ include("partials/_navbar.php");
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> 
+          </div>-->
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-xl-4 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body border-bottom">
@@ -380,8 +380,8 @@ include("partials/_navbar.php");
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-6 col-xl-4 grid-margin stretch-card">
+            </div> -->
+            <!-- <div class="col-md-6 col-xl-4 grid-margin stretch-card">
               <div class="row">
                 <div class="col-md-12 grid-margin stretch-card">
                   <div class="card newsletter-card bg-gradient-warning">
@@ -426,35 +426,10 @@ include("partials/_navbar.php");
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-6 col-xl-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body border-bottom">
-                  <div class="d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-2 mb-md-0 text-uppercase font-weight-medium">Sales statistics</h6>
-                    <div class="dropdown">
-                      <button class="btn bg-white p-0 pb-1 text-muted btn-sm dropdown-toggle" type="button" id="dropdownMenuSizeButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Last 7 days
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton4">
-                        <h6 class="dropdown-header">Settings</h6>
-                        <a class="dropdown-item" href="javascript:;">Action</a>
-                        <a class="dropdown-item" href="javascript:;">Another action</a>
-                        <a class="dropdown-item" href="javascript:;">Something else here</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:;">Separated link</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card-body">
-                  <canvas id="sales-chart-d" height="320"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
+            </div> -->
+            
 
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-4 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
@@ -497,136 +472,12 @@ include("partials/_navbar.php");
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="table-responsive pt-3">
-                  <table class="table table-striped project-orders-table">
-                    <thead>
-                      <tr>
-                        <th class="ml-5">ID</th>
-                        <th>Project name</th>
-                        <th>Customer</th>
-                        <th>Deadline</th>
-                        <th>Payouts	</th>
-                        <th>Traffic</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>#D1</td>
-                        <td>Consectetur adipisicing elit </td>
-                        <td>Beulah Cummings</td>
-                        <td>03 Jan 2019</td>
-                        <td>$ 5235</td>
-                        <td>1.3K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#D2</td>
-                        <td>Correlation natural resources silo</td>
-                        <td>Mitchel Dunford</td>
-                        <td>09 Oct 2019</td>
-                        <td>$ 3233</td>
-                        <td>5.4K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#D3</td>
-                        <td>social capital compassion social</td>
-                        <td>Pei Canaday</td>
-                        <td>18 Jun 2019</td>
-                        <td>$ 4311</td>
-                        <td>2.1K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#D4</td>
-                        <td>empower communities thought</td>
-                        <td>Gaynell Sharpton</td>
-                        <td>23 Mar 2019</td>
-                        <td>$ 7743</td>
-                        <td>2.7K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>#D5</td>
-                        <td> Targeted effective; mobilize </td>
-                        <td>Audrie Midyett</td>
-                        <td>22 Aug 2019</td>
-                        <td>$ 2455</td>
-                        <td>1.2K</td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <button type="button" class="btn btn-success btn-sm btn-icon-text mr-3">
-                              Edit
-                              <i class="typcn typcn-edit btn-icon-append"></i>                          
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm btn-icon-text">
-                              Delete
-                              <i class="typcn typcn-delete-outline btn-icon-append"></i>                          
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+         
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <footer class="footer">
+        <!-- <footer class="footer">
             <div class="card">
                 <div class="card-body">
                     <div class="d-sm-flex justify-content-center justify-content-sm-between">
@@ -635,7 +486,7 @@ include("partials/_navbar.php");
                     </div>
                 </div>    
             </div>        
-        </footer>
+        </footer> -->
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

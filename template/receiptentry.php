@@ -227,23 +227,69 @@ include("partials/_navbar.php");
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Receipt Entry</h4>
-                  <form class="form-sample">
+                  <form class="form-sample" action="receipt_insert.php" method="POST">
                     <p class="card-description">
                     </p>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Voucher Date</label>
+                          <label class="col-sm-3 col-form-label">Loan No</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="loanno" id="loanno" class="form-control" placeholder="Loan No"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Receipt Ac</label>
+                          <label class="col-sm-3 col-form-label">Customer Name</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Customer Name"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Name</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="name" id="customername" class="form-control" placeholder="Name" readonly/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Date</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="date" id="date" class="form-control"placeholder="date" readonly/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label"> Amount</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="amount" id="loanamount" class="form-control" placeholder="0.00" readonly/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+<br>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Voucher No</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="voucherno" id="voucherno" class="form-control" placeholder="Voucher No"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Voucher Date</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="voucher_date" id="voucher_date" class="form-control" placeholder="Voucher Date"/>
                           </div>
                         </div>
                       </div>
@@ -252,28 +298,38 @@ include("partials/_navbar.php");
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Amount</label>
+                          <label class="col-sm-3 col-form-label">Receipt AC</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="receiptac" id="" class="form-control" placeholder=" Receipt Ac"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Narration</label>
+                          <label class="col-sm-3 col-form-label"> Amount</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="amount" id="" class="form-control" placeholder="Amount"/>
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Narration</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="narration" id="" class="form-control" placeholder="Narration"/>
+                          </div>
+                        </div>
+                      </div>
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Receipt Type</label>
                           <div class="col-sm-9">
-                          <!-- <input type="text" class="form-control" /> -->
-                            <select class="form-control">
+                            <!-- <input type="text" name="narration" id="narration" class="form-control" placeholder="Narration"/> -->
+                            <select class="form-control" name="receipttype" id="receipttype"> >
+                            <option value="">select</option>
                               <option value="interest">Interest</option>
                               <option value="principal">Principal</option>
                               <option value="chittai">Chittai</option>
@@ -282,15 +338,142 @@ include("partials/_navbar.php");
                           </div>
                         </div>
                       </div>
+                    </div>
+
+                    <!-- <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label"></label>
                           <div class="col-sm-9">
-                            <input class="form-control" placeholder="dd/mm/yyyy"/>
+                           <input type="text" class="form-control" /> -->
+                           <!-- <select class="form-control" name="receipttype" id="receipttype"> >
+                            <option value="">select</option>
+                              <option value="interest">Interest</option>
+                              <option value="principal">Principal</option>
+                              <option value="chittai">Chittai</option>
+
+                            </select> 
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                           <label class="col-sm-3 col-form-label"></label>
+                          <div class="col-sm-9">
+                            <input class="form-control" name="" id="" placeholder="dd/mm/yyyy"/>
+                          </div> 
+                        </div>
+                      </div>
+                    </div> -->
+
+                    <center>
+                    <button type="submit" name="insert" class="btn btn-primary mb-2">Save</button>
+                    </form>
+                    <button type="submit" class="btn btn-primary mb-2">Refresh</button>
+
+
+                    <button type="submit" class="btn btn-primary mb-2">UPDATE</button></center> 
+                    <br>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Loan Amount</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="amount" id="loanamount" class="form-control" placeholder="0.00" readonly/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">No of Days</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Interest Amount</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">ChittaiTobePaid</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Penalty Amount</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Principal Paid</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Interest Paid</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="loanno" id="loanno" class="form-control" placeholder="0.00"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Principal Balance</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Interest Balalnce</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div><div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Chittai Balance</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row">
+                          <label class="col-sm-4 col-form-label">Balalnce Totoal</label>
+                          <div class="col-sm-7">
+                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <br>
+
+
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
@@ -362,13 +545,7 @@ include("partials/_navbar.php");
                         </div>
                       </div>
                     </div>
-                    <center>
-                    <button type="submit" class="btn btn-primary mb-2">Refresh</button>
-
-                    <button type="submit" class="btn btn-primary mb-2">Save</button>
-
-                    <button type="submit" class="btn btn-primary mb-2">UPDATE</button>
-</center>
+                    
                     
 
 </div>
@@ -378,6 +555,7 @@ include("partials/_navbar.php");
 
                     
                     <!-- base:js -->
+
   <script src="vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page-->
@@ -393,7 +571,63 @@ include("partials/_navbar.php");
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </body>
 
 </html>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $("#loanno").focus();  //cursor show click avoid
+        $("#loanno").keyup(function(){        //event
+            // alert("click working");
+            var loanno = $("#loanno").val();        //1-2 html to javascript
+            // alert(loanno);
+            $.ajax({
+                url:"info.php",         //url
+                method:"GET",           //
+                data:{loanno:loanno},
+                success:function(response){
+                    response = JSON.parse(response);
+                   $("#customername").val(response.customername);   //name show input bod
+                   $("#date").val(response.date);    //amount show input name
+                   $("#loanamount").val(response.loanamount);
+                   //$("#loanamount").val(response.loanamount);
+                  //  $("#address").val(response.address);
+                  //  $("#amount").val(response.amount);
+                   // $("#received_amount").focus();                                      
+                    // alert("@@");
+                 }
+
+            });
+            // alert("Ajax - TEST");
+        });
+     
+
+
+      $("#name").keyup(function(){
+            //alert("click working");
+            var name = $("#name").val();
+            $.ajax({
+                url:"info_customername.php", 
+                method:"GET",
+                data:{name:name},
+                success:function(response){
+                    response = JSON.parse(response);
+                    console.log(response.customername);
+                   $("#customername").val(response.customername);
+                   $("#date").val(response.date);
+                   $("#loanamount").val(response.loanamount);
+                   $("#loanamount").val(response.loanamount);
+                  //  $("#address").val(response.address);
+                  //  $("#amount").val(response.amount);
+                   // $("#received_amount").focus();                                      
+                    // alert("@@");
+                 }
+
+            });
+            // alert("Ajax - TEST 1");
+        });
+      });
+ </script>
+
 

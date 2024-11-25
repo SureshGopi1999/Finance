@@ -222,48 +222,49 @@ include("partials/_navbar.php");
           
         </ul>
       </nav>
+      
       <!------>
       <div class="col-10 grid-margin">
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">INTEREST LOAN</h4>
-                  <form class="form-sample">
+                  <form class="form-sample" action="interestloan_insert.php" method="POST">
                     <p class="card-description">
                       
                     </p>
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Loan Type</label>
+                          <label class="col-sm-3 col-form-label">Loan No</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="loanno" id="loanno" class="form-control" placeholder="Loan No"/>
                           </div>
                         </div>
                       </div>
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Loan Type</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="loantype" id="loantype" class="form-control" placeholder="Loan Type"/>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Customer Name</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="customername" id="customername" class="form-control" placeholder="Customer Name"/>
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Date</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Contact Numaber</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="date" name="date" id="date" class="form-control" placeholder=""/>
                           </div>
                         </div>
                       </div>
@@ -271,9 +272,9 @@ include("partials/_navbar.php");
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Loan Amount</label>
+                          <label class="col-sm-3 col-form-label">Contact Number</label>
                           <div class="col-sm-9">
-                          <input type="text" class="form-control" />
+                          <input type="text"  name="contactno" id="contactno" class="form-control" placeholder="Contact Number"/>
                             <!-- <select class="form-control">
                               <option>Male</option>
                               <option>Female</option>
@@ -283,9 +284,9 @@ include("partials/_navbar.php");
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Interest</label>
+                          <label class="col-sm-3 col-form-label">Loan Amount</label>
                           <div class="col-sm-9">
-                            <input class="form-control" placeholder="dd/mm/yyyy"/>
+                            <input class="form-control" name="loanamount" id="loanamount" placeholder="Loan Amount"/>
                           </div>
                         </div>
                       </div>
@@ -293,54 +294,37 @@ include("partials/_navbar.php");
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Due Date</label>
+                          <label class="col-sm-3 col-form-label">Interest</label>
                           <div class="col-sm-9">
-                          <input type="text" class="form-control" />
-                            <!-- <select class="form-control">
-                              <option>Category1</option>
-                              <option>Category2</option>
-                              <option>Category3</option>
-                              <option>Category4</option>
-                            </select> -->
+                          <input class="form-control" name="interest" id="interest" placeholder="Interest"/>
                           </div>
                         </div>
                       </div>
-
-                      <button type="submit" class="btn btn-primary mb-2">ACTIVE</button>
-
-            
+                     
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Days</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="days" id="days" class="form-control" placeholder="Days">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Loan No</label>
+                          <label class="col-sm-3 col-form-label">Document Charges</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="document_charges" id="document_charges" class="form-control" placeholder="Document Charges"/>
                           </div>
                         </div>
                       </div>
                       
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">DAYS</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Document charges</label>
-                          <div class="col-sm-9">
-                            <input type="text" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Interest Taken</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="interest_taken" id="interest_taken" class="form-control" placeholder="Interest Taken"/>
                           </div>
                         </div>
                       </div>
@@ -348,9 +332,9 @@ include("partials/_navbar.php");
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Interest Amount Per Day</label>
+                          <label class="col-sm-3 col-form-label">Interest Amount PerDay</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="Interestamt_perday" id="Interestamt_perday" class="form-control" placeholder="Interest Amount PerDay"/>
                           </div>
                         </div>
                       </div>
@@ -358,7 +342,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Collection Amount/Day</label>
                           <div class="col-sm-9">
-                          <input type="text" class="form-control" />
+                            <input type="text" name="collectionamt_day" id="collectionamt_day"class="form-control" placeholder="Collection Amount/Day"/>
                           </div>
                         </div>
                       </div>
@@ -366,29 +350,27 @@ include("partials/_navbar.php");
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Given Amount</label>
+                          <label class="col-sm-3 col-form-label"> Given Amount</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="givenamt" id="givenamt" class="form-control" placeholder="Given Amount"/>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Payment Ac</label>
+                          <label class="col-sm-3 col-form-label">Payment AC</label>
                           <div class="col-sm-9">
-                          <input type="text" class="form-control" />
+                            <input type="text" name="paymentac" id="paymentac" class="form-control" placeholder="Reference By"/>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Open Document</button>
-
                     <div class="row">
                       <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Narration</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" />
+                            <input type="text" name="narration" id="narration" class="form-control" placeholder="Narration"/>
                           </div>
                         </div>
                       </div>
@@ -396,16 +378,130 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">ID Details</label>
                           <div class="col-sm-9">
-                          <input type="text" class="form-control" />
+                          <input type="text" name="id_details" id="id_details" class="form-control" placeholder="ID Details"/>
+
+                            <!-- <select class="form-control" name="idproof" >
+                            <option>Select</option>
+                              <option value="aadharcard">AADHAR CARD</option>
+                              <option value="voterid">VOTER ID</option>
+                              <option value="pancard">PANCARD</option>
+                              <option value="drivinglicense">DRIVING LICENSE</option>
+                            </select> -->
                           </div>
                         </div>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Refresh</button>
+                     <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <!-- <label class="col-sm-3 col-form-label">ID Proof No</label>
+                          <div class="col-sm-9">
+                            <input type="text" name="idproofno" class="form-control" placeholder="ID Proof No"/> -->
+                          </div>
+                        </div>
+                      </div>
+                       <div class="col-md-6">
+                        <div class="form-group row">
+                         <!-- <label class="col-sm-3 col-form-label"></label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" />
+                          </div>
+                        </div>-->
+                      </div>
+                    </div> 
+                    <br>
+                    <br>
+                   <center> <button type="submit" name="insert" id="insert" class="btn btn-primary mb-2">SAVE</button>
+                    <button type="" class="btn btn-info mb-2">Refresh</button>
+                    <button type="" class="btn btn-info mb-2">ACTIVE</button></center>
+                    <a href="documentupload.php"><button type="submit" class="btn btn-danger mb-2">Open Document</a></button> 
 
-                    <button type="submit" class="btn btn-primary mb-2">Save</button>
+
+                    
 </div>
 </div>
+</form>
+<!-- <script>
+  $(document).ready(function(){
+    $('#insert').click(function(){
+      var loanno=$('#loanno').val();
+      var loantype=$('#loantype').val();
+      var customername=$('#customername').val();
+      var date=$('#date').val();
+      var contactno=$('#contactno').val();
+      var loanamount=$('#loanamount').val();
+      var interest=$('#interest').val();
+      var days=$('#days').val();
+      var document_charges=$('#document_charges').val();
+      var interest_taken=$('#interest_taken').val();
+      var Interestamt_perday=$('#Interestamt_perday').val();
+      var collectionamt_day=$('#collectionamt_day').val();
+      var givenamt=$('#givenamt').val();
+      var paymentac=$('#paymentac').val();
+      var narration=$('#narration').val();
+      var id_details=$('#id_details').val();
+      if (loanno!="", loantype!="", customername!="", date!="", contactno!="", loanamount!="", interest!="", days!="", document_charges!="", interest_taken!="", Interestamt_perday!="",
+      collectionamt_day!="", givenamt!="", paymentac!="", narration!="", id_details!="",){
+        $.ajax({
+          url:"interestloan_insert.php",
+          type:"GET",
+          data:{loanno:loanno,loantype:loantype,customername:customername,date:date,contactno:contactno,loanamount:loanamount,interest:interest,
+            days:days,document_charges:document_charges,interest_taken:interest_taken,Interestamt_perday:Interestamt_perday,collectionamt_day:collectionamt_day,
+            givenamt:givenamt,paymentac:paymentac,narration:narration,id_details:id_details},
+            success:function(response){
+
+            }
+        });
+      }
+      
+    });
+  });
+</script> -->
+                   
+
+
+
+<div class="col-lg-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">INTEREST DETAILS</h4>
+                  <!-- <p class="card-description">
+                    Add class <code>.table-bordered</code>
+                  </p> -->
+                  <div class="table-responsive pt-3">
+                  <!-- <div class="table-responsive"> -->
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>SINo.</th>
+                          <th>Voucher No</th>
+                          <th>Voucher Date</th>
+                          <th>Voucher Type</th>
+                          <th>Debit</th>
+                          <th>Credit</th>
+                          <th>Narration</th>
+                          <th>Bill Type</th>
+                          <th>Receipt Ac</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                            <td></td>
+                          <td>Jacob</td>
+                          <td>53275531</td>
+                          <td>12 May 2017</td>
+                          <td><label class="badge badge-danger">Pending</label></td>
+                        </tr>
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+</div>
+</div>
+
 
 
 

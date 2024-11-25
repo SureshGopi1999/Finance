@@ -231,50 +231,70 @@ include("partials/_navbar.php");
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Chittai</h4>
-                  <nav class="navbar bg-body-tertiary">
-  <form class="container-fluid justify-content-start">
-    <a href="principalpaiddetails.php"><button class="btn btn-sm btn-outline-secondary me-2" type="button">PRINCIPAL PAID DETAILS</a></button>
-    <a href="interestdetails.php"><button class="btn btn-sm btn-outline-secondary me-2" type="button">INTEREST DETAILS</a></button>
-
-  </form>
-</nav>
+                  <h4 class="card-title">Principal Paid Details</h4>
                   <!-- <p class="card-description">
                     Add class <code>.table</code>
                   </p> -->
-                  <div class="table-responsive">
-                    <table class="table">
+
+                  <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Loan NO</label>
+                          <div class="col-sm-5">
+                            <input type="text" class="form-control" />
+                          </div>
+                        </div>
+                      </div>
+                      
+<div>
+                  <!-- <div class="table-responsive"> -->
+                    <!-- <table class="table">
                       <thead>
                         <tr>
-                          <th></th>
-                          <th>SINo.</th>
-                          <th>Voucher No</th>
-                          <th>Voucher Date</th>
-                          <th>Voucher Type</th>
-                          <th>Debit</th>
-                          <th>Credit</th>
+                          <th>SINo</th>
+                          <th>Document Type</th>
+                          <th>Upload files</th>
+                         
+                          
                           
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                            <td></td>
-                          <td>Jacob</td>
-                          <td>53275531</td>
-                          <td>12 May 2017</td>
-                          <td><label class="badge badge-danger">Pending</label></td>
+                            <td>1</td>
+                          <td>AATHAR CARD</td>
+                          <td>UPLOAD</td>
+                        
                         </tr>
                         
                       </tbody>
-                    </table>
+                    </table> -->
+                <thead>
+                    <th>
+                        Document Type
+</th>
+
+                    <th>
+                         Upload
+</th>
+                </thead>
+
+                    <ul>
+                    <li>AATHAR CARD </li>
+                    <li>CHEQUE</li>
+                    <li>E.C</li>
+                    <li>PAN CARD</li>
+                    <li>PORMISERY PAPER</li>
+                    <li>PROPERTY DOCUMENT</li>
+                    <li>RC</li>
+                    </ul>
+                    
                   </div>
                 </div>
               </div>
             </div>
 
 
-
-      
 </div>
 </div>
 

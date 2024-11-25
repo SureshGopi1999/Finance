@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -231,12 +228,12 @@ include("partials/_navbar.php");
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Principal Paid Details</h4>
+                  <center><h2 class="card-title">Principal Paid Details</h2></center>
                   <!-- <p class="card-description">
                     Add class <code>.table</code>
                   </p> -->
                   <div class="table-responsive">
-                    <table class="table">
+                    <table border="2">
                       <thead>
                         <tr>
                           <th>SINo</th>

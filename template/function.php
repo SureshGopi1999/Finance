@@ -1,5 +1,5 @@
 <?php
-require("config.php");
+require("dbconfig.php");
 class data{
     private $connection;
     public function __construct(){
