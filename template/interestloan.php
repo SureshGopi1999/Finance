@@ -458,7 +458,8 @@ include("partials/_navbar.php");
   });
 </script> -->
                    
-
+</div>
+</div>
 
 
 <div class="col-lg-12 grid-margin stretch-card">
