@@ -18,5 +18,17 @@ class data{
             return "ERROR";
         }
     }
+    public function user(){
+        $sql="SELECT * FROM tbaccounts_master";
+        $result=$this->connection->query($sql);
+        $users=[];
+        if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+                $users[]=$row;
+            }
+        }
+        return $users;
+    }
 }
+
     ?>

@@ -243,17 +243,30 @@ include("partials/_navbar.php");
                             <select class="form-control">
                               <option>select</option>
                               <option>Ledger Account</option>
-                              <option>Category3</option>
-                              <option>Category4</option>
+                              <option>Group Ledger Report</option>
                             </select>
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <!-- <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Ledger</label>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" />
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Ledger</label>
+                          <div class="col-sm-9">
+                            <!-- <input type="text" class="form-control" /> -->
+                            <select class="form-control">
+                              <option>select</option>
+                              <option>Ledger Account</option>
+                              <option>Category3</option>
+                              <option>Category4</option>
+                            </select>
                           </div>
                         </div>
                       </div>
@@ -268,11 +281,25 @@ include("partials/_navbar.php");
                           </div>
                         </div>
                       </div>
-                      <div class="col-md-6">
+                      <!-- <div class="col-md-6">
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Cost Centre</label>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" />
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="col-md-6">
+                        <div class="form-group row">
+                          <label class="col-sm-3 col-form-label">Cost Center</label>
+                          <div class="col-sm-9">
+                            <!-- <input type="text" class="form-control" /> -->
+                            <select class="form-control">
+                              <option>select</option>
+                              <option>Nil</option>
+                              <option>Category3</option>
+                              <option>Category4</option>
+                            </select>
                           </div>
                         </div>
                       </div>

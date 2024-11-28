@@ -1,3 +1,8 @@
+<?php
+require ("function.php");
+$db=new data();
+$user=$db->user();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -235,41 +240,67 @@ include("partials/_navbar.php");
                   <!-- <p class="card-description">
                     Add class <code>.table</code>
                   </p> -->
-                  <form class="forms-sample">
+                  <form class="forms-sample" action="accounts_masterinsert.php" method="POST">
                     <div class="form-group row">
                       <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Ledger Name</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampleInputUsername2" placeholder="Username">
+                        <input type="text" class="form-control" name="ledgername" id="ledgername" placeholder="Username">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Balance Sheet Group</label>
                       <div class="col-sm-9">
-                        <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email">
+                        <!-- <input type="text" class="form-control" name="balancesheet" placeholder="Balance Sheet Group"> -->
+                         <input list="balancesheet" name="balancesheet" class="form-control" >
+                         <datalist id="balancesheet">
+                          <option value="CAPITAL A/C">
+                          <option value="CASH AT BANK">
+                          <option value="CASH IN HAND">
+                          <option value="CLEANER">
+                          <option value="COMPANY OR PARTY">
+                          <option value="CURRENT ASSET">
+                          <option value="CURRENT LIABILITY">
+                          <option value="DIRECT EXPENSES">
+                          <option value="DIRECT INCOME">
+                          <option value="FIXED ASSET">
+                          <option value="INDIRECT EXPENSES">
+                          <option value="INDIRECT INCOME">
+                          <option value="INVESTMENT">
+                          <option value="LOAN CUSTOMER">
+                          <option value="LOANS (LIABILITY)">
+                          <option value="MICS.EXPENSES">
+                          <option value="OPERATOR">
+                          <option value="PURCHASE A/C">
+                          <option value="SALES A/C">
+                          <option value="SUNDARYCREDITORS">
+                          <option value="SUNDARY DEBTORS">
+                          <option value="SUSPENSE A/C">
+                          </datalist>
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleInputMobile" class="col-sm-3 col-form-label">Bata</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampleInputMobile" placeholder="Mobile number">
+                        <input type="text" class="form-control" name="bata" id="bata" placeholder="Mobile number">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleInputMobile" class="col-sm-3 col-form-label">Address</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampleInputMobile" placeholder="Mobile number">
+                        <input type="text" class="form-control" name="address" id="address" placeholder="Mobile number">
                       </div>
                     </div>
                     <div class="form-group row">
                       <label for="exampleInputMobile" class="col-sm-3 col-form-label">GSTIN</label>
                       <div class="col-sm-9">
-                        <input type="text" class="form-control" id="exampleInputMobile" placeholder="Mobile number">
+                        <input type="text" class="form-control" name="gstin" id="gstin" placeholder="Mobile number">
                       </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary mr-2">Save</button>
+                    <button type="submit" name="insert" id="insert" class="btn btn-primary mr-2">Save</button>
+                    </form>
                     <button class="btn btn-light">Cancel</button>
-                  </form>
+                
                 </div>
               </div>
             </div>
@@ -285,45 +316,29 @@ include("partials/_navbar.php");
                     <table class="table table-hover">
                       <thead>
                         <tr>
+                          <th>SNO</th>
                           <th>PartyName</th>
                           <th>GroupName</th>
-                          <th>Customer</th>
+                          <!-- <th>Customer</th> -->
                           <th>Bata</th>
                           <th>GSTIN</th>
                           <th>PerAddress</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>Jacob</td>
-                          <td>Photoshop</td>
-                          <td class="text-danger"> 28.76% <i class="typcn typcn-arrow-down-thick"></i></td>
-                          <td><label class="badge badge-danger">Pending</label></td>
-                        </tr>
-                        <tr>
-                          <td>Messsy</td>
-                          <td>Flash</td>
-                          <td class="text-danger"> 21.06% <i class="typcn typcn-arrow-down-thick"></i></td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
-                        <tr>
-                          <td>John</td>
-                          <td>Premier</td>
-                          <td class="text-danger"> 35.00% <i class="typcn typcn-arrow-down-thick"></i></td>
-                          <td><label class="badge badge-info">Fixed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Peter</td>
-                          <td>After effects</td>
-                          <td class="text-success"> 82.00% <i class="typcn typcn-arrow-up-thick"></i></td>
-                          <td><label class="badge badge-success">Completed</label></td>
-                        </tr>
-                        <tr>
-                          <td>Dave</td>
-                          <td>53275535</td>
-                          <td class="text-success"> 98.05% <i class="typcn typcn-arrow-up-thick"></i></td>
-                          <td><label class="badge badge-warning">In progress</label></td>
-                        </tr>
+
+                    
+                      <?php
+                      foreach($user as $user){
+                       echo "<tr> ";
+                       echo "<td>" .$user['id']."</td>";
+                       echo "<td>" .$user['ledgername']."</td>";
+                       echo "<td>" .$user['balancesheet']."</td>";
+                       echo "<td>" .$user['bata']."</td>";
+                       echo "<td>" .$user['address']."</td>";
+                       echo "<td>" .$user['gstin']."</td>";
+                        }
+                        ?>
                       </tbody>
                     </table>
                   </div>
