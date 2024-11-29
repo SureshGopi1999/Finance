@@ -1,3 +1,12 @@
+<?php
+$vno = $_GET['voucherno'];
+$date = $_GET['date'];
+$vtype = $_GET['vouchertype'];
+$vname = $_GET['lname'];
+$debit = $_GET['debit'];
+$credit = $_GET['credit'];
+$narration = $_GET['narration'];
+?>
 <html>
 <head>
 </head>
@@ -8,9 +17,9 @@
 
 
 
-    <h5>Voucher No :</h5>
-    <h5>Voucher Date :</h5>
-    <h5>Voucher Type :</h5>
+    <h5>Voucher No :<span><?php echo $vno;?></span></h5>
+    <h5>Voucher Date :<span><?php echo $date;?></span></h5>
+    <h5>Voucher Type :<span><?php echo $vtype;?></span></h5>
     <br>
 
     <div>
@@ -28,10 +37,12 @@
                       <tbody>
                 
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td> </td>
-                    <td></td>
+                  <?php $serial=1;?>
+                    <td><?php echo  $serial++;?></td>
+                    <td><?php echo $date;?></td>
+                    <td><?php echo $vname;?></td>
+                    <td><?php echo $debit;?></td>
+                    <td><?php echo $credit;?></td>
 
                      </tr>
 
@@ -40,7 +51,7 @@
 
 </div>
 <br>
-<span>Narration :</span>
+<span>Narration :</span><?php echo $narration;?>
 <br>
 <br>
 <br>

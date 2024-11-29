@@ -1,3 +1,8 @@
+<?php
+require('function.php');
+$db=new data();
+$ledger = $db->ledger("tbcustomer");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -261,11 +266,13 @@ include("partials/_navbar.php");
                           <label class="col-sm-3 col-form-label">Ledger</label>
                           <div class="col-sm-9">
                             <!-- <input type="text" class="form-control" /> -->
-                            <select class="form-control">
-                              <option>select</option>
-                              <option>Ledger Account</option>
-                              <option>Category3</option>
-                              <option>Category4</option>
+                            <select class="form-control" id="ledger">
+                              <option>Ledger Name</option>
+                             <?php
+                             foreach($ledger as $ledge){
+                              echo "<option value='".$ledge['ledgername']."'>".$ledge['ledgername']."</option>";
+                             }
+                             ?>
                             </select>
                           </div>
                         </div>
@@ -306,23 +313,20 @@ include("partials/_navbar.php");
                     </div>
                     <!-- <button type="submit" class="btn btn-primary mb-2">Refresh</button> -->
                     <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
+  <input class="form-check-input" type="checkbox" id="checkReport" value="report" data-val="report">
+  <label class="form-check-label" for="checkReport">
     Report Wise
   </label>
-<!-- </div>
-<div class="form-check"> -->
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-  <label class="form-check-label" for="flexCheckChecked">
+  <input class="form-check-input" type="checkbox" id="checkDay" value="day" data-val="day">
+  <label class="form-check-label" for="checkDay">
     Day Wise
   </label>
-<!-- </div> -->
-<!-- <div class="form-check"> -->
-  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-  <label class="form-check-label" for="flexCheckDefault">
+  <input class="form-check-input" type="checkbox" id="checkMonth" value="month" data-val="month">
+  <label class="form-check-label" for="checkMonth">
     Month Wise
   </label>
 </div>
+
 <center>
   <!-- <div class="form-check"> -->
   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -340,7 +344,7 @@ include("partials/_navbar.php");
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <label class="col-sm-2 col-form-label">From Date</label>
                           <div class="col-sm-3">
-                            <input type="date" class="form-control" />
+                            <input type="date" class="form-control" id="fdate" />
                           </div>
                         </div>
                       </div>
@@ -348,12 +352,12 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-2 col-form-label">To Date</label>
                           <div class="col-sm-3">
-                            <input type="date" class="form-control" />
+                            <input type="date" class="form-control" id="tdate"/>
                           </div>
                         </div>
                       </div>
                     </div>
-      <center> <button type="submit" class="btn btn-primary mb-2">View</button></center>
+      <center> <button type="submit" class="btn btn-primary mb-2" id="view">View</button></center>
 
 
 
@@ -555,6 +559,30 @@ include("partials/_navbar.php");
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+ $(document).ready(function () {
+  $("#view").on("click", function (e) {
+    e.preventDefault();
+
+    var ledger = $("#ledger").val();
+
+    var val = $(".form-check-input:checked").data("val"); 
+
+    var fdate = $("#fdate").val();
+
+    var tdate = $("#tdate").val();
+
+    // alert(tdate);
+    var url = "view_report.php?ledger=" + encodeURIComponent(ledger) +
+                "&val=" + encodeURIComponent(val) +
+                "&fdate=" + encodeURIComponent(fdate) +
+                "&tdate=" + encodeURIComponent(tdate);
+                window.location.href = url;
+  });
+});
+
+</script>
 
 </html>
 

@@ -1,24 +1,24 @@
-<?php
-error_reporting(E_ERROR | E_PARSE);
+ <?php
 require("function.php");
-
-$db = new data();
-
-// Retrieve GET parameters
-$sdate = isset($_GET['sdate']) ? $_GET['sdate'] : null;
-$edate = isset($_GET['edate']) ? $_GET['edate'] : null;
-$vtype = isset($_GET['vtype']) ? $_GET['vtype'] : null;
-$vname = isset($_GET['vname']) ? $_GET['vname'] : null;
-$vno = isset($_GET['vno']) ? $_GET['vno'] : null;
-
-// Fetch data based on the provided parameters
-if ($sdate && $edate && $vtype && $vname && $vno) {
-    $user = $db->user('tbvoucher', $sdate, $edate, $vtype, $vname, $vno);
-} else {
-    $user = []; // Default to an empty result set if parameters are missing
-}
-?>
-
+$ledger = $_GET['ledger'];
+$check = $_GET['val'];
+$fdate = $_GET['fdate'];
+$tdate = $_GET['tdate'];
+ $db=new data();
+if($check == null && $fdate == null && $tdate == null ){
+$ledger = $db->ledgereport('tbvoucher',$ledger);
+ }elseif($fdate == null && $tdate == null && $check == 'day'){
+    $dledge = $db->onlydayledge('tbvoucher',$check);
+ }elseif($fdate == null && $tdate == null && $check == 'month'){
+    $mledge = $db->onlymonthledge('tbvoucher',$check);
+ }elseif($check == 'day' && $fdate != null && $tdate != null){
+    $fdledge = $db->fdatedayeledge('tbvoucher',$check,$fdate,$tdate);
+ }elseif($check == 'month' && $fdate != null && $tdate != null){
+    $fmledge = $db->fdatemonthledge('tbvoucher',$check,$fdate,$tdate);
+ }elseif($check == null && $fdate != null && $tdate != null){
+    $ftledge = $db->ftledge('tbvoucher',$fdate,$tdate);
+ }
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,11 +26,10 @@ if ($sdate && $edate && $vtype && $vname && $vno) {
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>PolluxUI Admin</title>
+  <title>BALA FINANCE</title>
   <!-- base:css -->
   <link rel="stylesheet" href="vendors/typicons/typicons.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -244,166 +243,92 @@ include("partials/_navbar.php");
           
         </ul>
       </nav>
-      <!------>
-
       
-<!-- partial -->
-<div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-<!-- <div class="col-lg-12 grid-margin stretch-card">
+      <!------>
+      <div class="col-10 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">   search</h4>
-                   <p class="card-description">
-                    Add class <code>.table-striped</code>
-                  </p> 
-                  <div class="table-responsive"> -->
-<!-- form data opening-->
-                  
-
-
-            <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">SEARCH</h4>
-                  <!-- <p class="card-description">
-                    Add class <code>.table-bordered</code>
-                  </p> -->
-  
-                  <form action="" method="POST">
-                    <center>
-    <label for="start_date">Start Date:</label>
-    <input type="date" id="start_date" name="start_date" required>
-
-    <label for="end_date">End Date:</label>
-    <input type="date" id="end_date" name="end_date" required>
-
-   <button type="submit" class="btn btn-success mb-2">Search</button></center>
-</form>
-                  <div class="table-responsive pt-3">
-                  <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Voucher Type</label>
-                          <div class="col-sm-9">
-                            <select class="form-control" name="balancesheet" id="vtype">
-                              <option value="payment">PAYMENT</option>
-                              <option value="receipt">RECEIPT</option>
-                              <option value="purchase">PURCHASE</option>
-                              <option value="sales">SALES</option>
-                              <option value="journal">JOURNAL</option>
-                              <option value="credit">CREDIT</option>
-                              <option value="debit">DEBIT</option>
-                              <option value="contra">CONTRA</option>
-                              
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                     
-                    <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Voucher No</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="vno" id="vno" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Voucher Name</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="vname" id="vname" class="form-control" />
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <!-- <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Voucher No</label>
-                          <div class="col-sm-9">
-                            <input type="text" name="district" class="form-control" />
-                          </div>
-                        </div>
-                      </div> -->
-                    </div>
-
-           <center><a href="printreport.php"><button type="submit" name="preprt" id="preport" class="btn btn-primary mb-2">Print Report</button></a>
-           <button type="submit" id="refresh" class="btn btn-info mb-2">Refresh</button>
-           </center>
-           
-                  
-              </div>
-            </div>
-</div>
-</div>
-
-            <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">VOUCHER</h4>
-                  <!-- <p class="card-description">
-                    Add class <code>.table-bordered</code>
-                  </p> -->
-                  <div class="table-responsive pt-3">
-
-    <table class="table table-bordered">
-      <thead>
+                  <h4 class="card-title text-center">CASH</h4>
+                  <ul class="list-group list-group-flush">
+    <li class="list-group-item"></li>
+    <li class="list-group-item text-center">Ledger Account</li>
+    <li class="list-group-item text-center"><?php if($check == 'day'){
+       echo "<span> Day Wise Reports </span>";
+    }elseif($check == 'month'){
+        echo "<span> Month Wise Reports </span>";
+    }elseif(isset($fdate)){
+        echo "<span>".$fdate ." to ".$tdate."</span>";
+    }
+        ?></li>
+    <li class="list-group-item"></li>
+  </ul>
+  <table class="table">
+    <thead>
         <tr>
-            <th>Serial</th>
-            <th>Voucher Name</th>
-            <th>Voucher Number</th>
-            <th>Voucher Type</th>
-            <th>Date</th>
-            <th>Narration</th>
-            <th>Debit</th>
-            <th>Credit</th>
+            <th scope="col">Sl.No</th>
+            <th scope="col">Date</th>
+            <th scope="col">Particulars</th>
+            <th scope="col">Vr.Type</th>
+            <th scope="col">Vr.No</th>
+            <th scope="col">Debit</th>
+            <th scope="col">Credit</th>
         </tr>
-</thead>
-<tbody>
-<?php if (!empty($user)): ?>
+    </thead>
+    <tbody>
         <?php
-        $serial = 1;
-        foreach ($user as $users):
-        ?>
-            <tr>
-                <td><button 
-                    type="button" 
-                    class="btn btn-primary print-btn" 
-                    data-serial="<?php echo $serial++; ?>" 
-                    data-lname="<?php echo htmlspecialchars($users['lname']); ?>" 
-                    data-voucherno="<?php echo htmlspecialchars($users['voucherno']); ?>" 
-                    data-vouchertype="<?php echo htmlspecialchars($users['vouchertype']); ?>" 
-                    data-date="<?php echo htmlspecialchars($users['date']); ?>" 
-                    data-narration="<?php echo htmlspecialchars($users['narration']); ?>" 
-                    data-debit="<?php echo htmlspecialchars($users['debit']); ?>" 
-                    data-credit="<?php echo htmlspecialchars($users['credit']); ?>"
-                >
-                    <i class="bi bi-printer"> Print</i>
-                </button></td>
-                <td><?php echo htmlspecialchars($users['lname']); ?></td>
-                <td><?php echo htmlspecialchars($users['voucherno']); ?></td>
-                <td><?php echo htmlspecialchars($users['vouchertype']); ?></td>
-                <td><?php echo htmlspecialchars($users['date']); ?></td>
-                <td><?php echo htmlspecialchars($users['narration']); ?></td>
-                <td><?php echo htmlspecialchars($users['debit']); ?></td>
-                <td><?php echo htmlspecialchars($users['credit']); ?></td>
-            </tr>
-        <?php endforeach; ?>
-<?php endif; ?>
-        </tbody>
-        </table>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
+        if($check == null && $fdate == null && $tdate == null){
+        $slno = 1;
+        foreach($ledger as $ledge){
+            echo "<tr>";
+            echo "<td>".$slno."</td>";
+            echo "<td>".$ledge['date']."</td>";
+            echo "<td>".$ledge['lname']."</td>";
+            echo "<td>".$ledge['vouchertype']."</td>";
+            echo "<td>".$ledge['voucherno']."</td>";
+            echo "<td>".$ledge['debit']."</td>";
+            echo "<td>".$ledge['credit']."</td>";
+            echo "</tr>";
+        }
+        $slno++;
+    }
+?>
+    </tbody>
+    <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total:</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>To Opening Balance:</td>
+            <td></td>
+            <td>1</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>By Claiming Balance:</td>
+            <td></td>
+            <td>3</td>
+            <td></td>
+        </tr>
+    </tbody>
+  </table>
+                    
 </div>
 </div>
+</form>
+
+
                     
                     <!-- base:js -->
   <script src="vendors/js/vendor.bundle.base.js"></script>
@@ -422,106 +347,5 @@ include("partials/_navbar.php");
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script>
-  $(document).ready(function () {
-    $("#vname").on('input', function (e) {
-      e.preventDefault();
-      var vname = $(this).val(); 
-      $.ajax({
-        url: 'voucher_report.php', 
-        type: 'GET',
-        data: { vname: vname },
-        success: function (response) {
-          var data = JSON.parse(response);
-          if (data.length > 0) {
-            $("#vno").val(data[0]); 
-          } else {
-            $("#vno").val(''); 
-          }
-        },
-        error: function (xhr, status, error) {
-          console.error("Error: " + error);
-        }
-      });
-    });
-  });
-</script>
-<script>
-  $(document).ready(function () {
-    $("#preport").on('click', function (e) {
-      e.preventDefault();
-      var sdate = $("#start_date").val();
-      var edate = $("#end_date").val();
-      var vtype = $("#vtype").val();
-      var vname = $("#vname").val();
-      var vno = $("#vno").val();
-
-      var params = "?sdate=" + encodeURIComponent(sdate) +
-                   "&edate=" + encodeURIComponent(edate) +
-                   "&vtype=" + encodeURIComponent(vtype) +
-                   "&vname=" + encodeURIComponent(vname) +
-                   "&vno=" + encodeURIComponent(vno);
-
-      window.location.href = "search.php" + params;
-
-    });
-    const url = new URL(window.location.href);
-    if (url.search) { 
-      history.replaceState(null, "", url.pathname);
-    }
-  });
-</script>
-<script>
-  $(document).ready(function () {
-    $("#refresh").on('click', function (e) {
-      e.preventDefault();
-      var sdate = $("#start_date").val();
-      var edate = $("#end_date").val();
-      var vtype = $("#vtype").val();
-      var vname = $("#vname").val();
-      var vno = $("#vno").val();
-
-      var params = "?sdate=" + encodeURIComponent(sdate) +
-                   "&edate=" + encodeURIComponent(edate) +
-                   "&vtype=" + encodeURIComponent(vtype) +
-                   "&vname=" + encodeURIComponent(vname) +
-                   "&vno=" + encodeURIComponent(vno);
-
-    window.location.href = "search.php" + params;
-    });
-    const url = new URL(window.location.href);
-    if (url.search) { 
-      history.replaceState(null, "", url.pathname);
-    }
-  });
-</script>
-<script>
-  $(document).ready(function () {
-    $(".print-btn").click(function () {
-        // Extract data from the clicked button's data attributes
-        const rowData = {
-          serial: $(this).data("serial"),
-            lname: $(this).data("lname"),
-            voucherno: $(this).data("voucherno"),
-            vouchertype: $(this).data("vouchertype"),
-            date: $(this).data("date"),
-            narration: $(this).data("narration"),
-            debit: $(this).data("debit"),
-            credit: $(this).data("credit"),
-        };
-
-        // Convert data to a query string
-        const queryString = $.param(rowData);
-
-        // Redirect to the new page with the query string
-        window.location.href = "printreport.php?" + queryString;
-    });
-});
-
-</script>
-
-
-
 
 </html>
