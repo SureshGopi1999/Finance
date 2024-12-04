@@ -4,7 +4,7 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
     $con=new data();
     // echo"working";
 
-    // if($_POST['insert']==="insert"){
+    
         echo "working";
         $data=[
             "ledgername"=>$_POST['ledgername'],
@@ -18,11 +18,9 @@ if($_SERVER["REQUEST_METHOD"]==="POST"){
         if($sai){
             // echo "INSERTED SUCCESS";
             echo "<script>alert('Insert Successfully'),
-            window.location.href='accountsmaster.php'</script>";
+            // window.location.href='accountsmaster.php'</script>";
     }else{
         echo "INSERTED ERROR";
     }
-        // }
-        // $data->closeconnect();
     }
 ?>
