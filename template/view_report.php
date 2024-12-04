@@ -1,24 +1,16 @@
- <?php
+  <?php
 require("function.php");
 $ledger = $_GET['ledger'];
 $check = $_GET['val'];
 $fdate = $_GET['fdate'];
 $tdate = $_GET['tdate'];
- $db=new data();
-if($check == null && $fdate == null && $tdate == null ){
-$ledger = $db->ledgereport('tbvoucher',$ledger);
- }elseif($fdate == null && $tdate == null && $check == 'day'){
-    $dledge = $db->onlydayledge('tbvoucher',$check);
- }elseif($fdate == null && $tdate == null && $check == 'month'){
-    $mledge = $db->onlymonthledge('tbvoucher',$check);
- }elseif($check == 'day' && $fdate != null && $tdate != null){
-    $fdledge = $db->fdatedayeledge('tbvoucher',$check,$fdate,$tdate);
- }elseif($check == 'month' && $fdate != null && $tdate != null){
-    $fmledge = $db->fdatemonthledge('tbvoucher',$check,$fdate,$tdate);
- }elseif($check == null && $fdate != null && $tdate != null){
-    $ftledge = $db->ftledge('tbvoucher',$fdate,$tdate);
- }
-?> 
+$db=new data();
+if($check == 'day'){
+$ledgers = $db->ledgerreportday('tbvoucher',$ledger);
+}elseif($check == 'month'){
+  $ledgemon = $db->ledgerreportmonth('tbvoucher',$ledger);
+}
+?>  
 <!DOCTYPE html>
 <html lang="en">
 
@@ -248,7 +240,7 @@ include("partials/_navbar.php");
       <div class="col-10 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title text-center">CASH</h4>
+                  <h4 class="card-title text-center"><?php echo $ledger;?></h4>
                   <ul class="list-group list-group-flush">
     <li class="list-group-item"></li>
     <li class="list-group-item text-center">Ledger Account</li>
@@ -276,11 +268,11 @@ include("partials/_navbar.php");
     </thead>
     <tbody>
         <?php
-        if($check == null && $fdate == null && $tdate == null){
+        if($check == 'day'){
         $slno = 1;
-        foreach($ledger as $ledge){
+        foreach($ledgers as $ledge){
             echo "<tr>";
-            echo "<td>".$slno."</td>";
+            echo "<td>".$slno++."</td>";
             echo "<td>".$ledge['date']."</td>";
             echo "<td>".$ledge['lname']."</td>";
             echo "<td>".$ledge['vouchertype']."</td>";
@@ -289,8 +281,20 @@ include("partials/_navbar.php");
             echo "<td>".$ledge['credit']."</td>";
             echo "</tr>";
         }
-        $slno++;
-    }
+      }elseif($check == 'month'){
+        $slno = 1;
+        foreach($ledgemon as $ledge){
+          echo "<tr>";
+          echo "<td>".$slno++."</td>";
+          echo "<td>".$ledge['month_name']."</td>";
+          echo "<td>".$ledge['lname']."</td>";
+          echo "<td>".$ledge['vouchertype']."</td>";
+          echo "<td>".$ledge['voucherno']."</td>";
+          echo "<td>".$ledge['total_debit']."</td>";
+          echo "<td>".$ledge['total_credit']."</td>";
+          echo "</tr>";
+      }
+      }
 ?>
     </tbody>
     <tbody>
