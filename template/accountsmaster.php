@@ -1,7 +1,8 @@
 <?php
+error_reporting(E_ERROR | E_PARSE);
 require ("function.php");
 $db=new data();
-$user=$db->user();
+$user=$db->user1("tbaccounts_master");
 ?>
 <!DOCTYPE html>
 <html lang="en">

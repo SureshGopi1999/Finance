@@ -8,6 +8,27 @@ class data{
             
         }
     }
+
+// Register
+public function loginsert($table,$name,$password){
+    $regsql="SELECT * FROM $table WHERE name='$name'";
+    $res=$this->connection->query($regsql);
+    // echo"Count:".$res->num_rows;
+    // exit();// stop line
+    if($res->num_rows>0){
+        $user=$res->fetch_assoc();
+        $password = $user['password'];
+        if(password_verify($password,$password)){
+            return "success";
+        }else{
+            return "Error";
+        }
+            // return $user;
+        }
+    }
+    // return true;
+// }
+
     public function insert($table,$data){
         $column=implode(',',array_keys($data));
         $values="'".implode("','",array_values($data))."'";
@@ -17,7 +38,24 @@ class data{
         }else{
             return "ERROR";
         }
+    
     }
+
+
+    public function user1($table){
+        $sql="SELECT * FROM $table";
+		// $link = $this->connection();
+        $result=$this->connection->query($sql);
+        $users=[];
+        if($result->num_rows>0){
+            while($row=$result->fetch_assoc()){
+                $users[]=$row;
+            }
+        }
+        return $users;
+    }
+
+
     public function user($table,$sdate,$edate,$vtype,$vname,$vno){
         $sql="SELECT * FROM $table WHERE lname = '$vname' AND vouchertype = '$vtype' AND voucherno = '$vno' AND  STR_TO_DATE(date, '%Y-%m-%d') BETWEEN STR_TO_DATE('$sdate', '%Y-%m-%d') 
                                              AND STR_TO_DATE('$edate', '%Y-%m-%d') 
