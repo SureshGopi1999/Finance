@@ -380,7 +380,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Loan Amount</label>
                           <div class="col-sm-7">
-                            <input type="text" name="amount" id="loanamount" class="form-control" placeholder="0.00" readonly/>
+                            <input type="text" name="amount" id="loanamount1" class="form-control" placeholder="0.00" readonly/>
                           </div>
                         </div>
                       </div>
@@ -388,7 +388,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">No of Days</label>
                           <div class="col-sm-7">
-                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                            <input type="text" name="" id="nodays" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
@@ -396,7 +396,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Interest Amount</label>
                           <div class="col-sm-7">
-                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                            <input type="text" name="" id="interestamnt" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
@@ -406,7 +406,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">ChittaiTobePaid</label>
                           <div class="col-sm-7">
-                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                            <input type="text" name="" id="chittai_paid" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
@@ -422,7 +422,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Principal Paid</label>
                           <div class="col-sm-7">
-                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                            <input type="text" name="" id="principal_paid" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
@@ -432,7 +432,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Interest Paid</label>
                           <div class="col-sm-7">
-                            <input type="text" name="loanno" id="loanno" class="form-control" placeholder="0.00"/>
+                            <input type="text" name="" id="interestpaid" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
@@ -440,7 +440,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Principal Balance</label>
                           <div class="col-sm-7">
-                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                            <input type="text" name="" id="principal_bal" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
@@ -448,7 +448,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Interest Balalnce</label>
                           <div class="col-sm-7">
-                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                            <input type="text" name="" id="interestbal" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
@@ -457,7 +457,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Chittai Balance</label>
                           <div class="col-sm-7">
-                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                            <input type="text" name="" id="chittai_bal" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
@@ -465,7 +465,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-4 col-form-label">Balalnce Totoal</label>
                           <div class="col-sm-7">
-                            <input type="text" name="" id="" class="form-control" placeholder="0.00"/>
+                            <input type="text" name="" id="balance_total" class="form-control" placeholder="0.00"/>
                           </div>
                         </div>
                       </div>
@@ -580,8 +580,7 @@ include("partials/_navbar.php");
       $("#loanno").focus();  //cursor show click avoid
         $("#loanno").keyup(function(){        //event
             // alert("click working");
-            var loanno = $("#loanno").val();        //1-2 html to javascript
-            // alert(loanno);
+            var loanno = $("#loanno").val();  
             $.ajax({
                 url:"info.php",         //url
                 method:"GET",           //
@@ -591,11 +590,71 @@ include("partials/_navbar.php");
                    $("#customername").val(response.customername);   //name show input bod
                    $("#date").val(response.date);    //amount show input name
                    $("#loanamount").val(response.loanamount);
-                   //$("#loanamount").val(response.loanamount);
-                  //  $("#address").val(response.address);
-                  //  $("#amount").val(response.amount);
-                   // $("#received_amount").focus();                                      
-                    // alert("@@");
+                   $("#loanamount1").val(response.loanamount);
+                   if(response.chittai){
+                   $("#principal_paid").val(response.chittai);
+                   }else{
+                    $("#principal_paid").val(response.principal);
+                   }
+                   $("#chittai_paid").val(response.chittai);
+                   $("#interestpaid").val(response.interest_paid);
+                
+                   var principal_bal = response.loanamount - response.chittai;
+                   var principal_bal1 = response.loanamount - response.principal;
+                   if(principal_bal){
+                   $("#principal_bal").val(principal_bal);
+                   }else{
+                    $("#principal_bal").val(principal_bal1);
+                   }
+
+                  
+
+                  // Calculate date difference
+                  const currentDate = new Date();
+                        var dateInput = response.date; // Date from AJAX response
+                        var inputDate = new Date(dateInput);
+
+                        if (!isNaN(inputDate.getTime())) { // Check for a valid date
+                            var differenceInMs = inputDate - currentDate;
+                            var differenceInDays = Math.ceil(differenceInMs / (1000 * 60 * 60 * 24));
+
+                            if (differenceInDays >= 0) {
+                                $("#nodays").val(` ${differenceInDays}`);
+                            } else {
+                                $("#nodays").val( `${Math.abs(differenceInDays)}`);
+                            }
+                        } else {
+                            $("#nodays").val("0");
+                        }
+
+                    var interest = response.interest;
+                    var days = $("#nodays").val();
+                    var iamnt = interest * days ;
+                    if(iamnt){ 
+                    $("#interestamnt").val(iamnt);
+                    }else{
+                      $("#interestamnt").val('0')
+                    }
+                    var intbal =iamnt - response.interest_paid;
+                    if(intbal){
+                    $("#interestbal").val(intbal);
+                    }else{
+                      $("#interestbal").val('0');
+                    }
+                    // console.log(days);
+                    var chittaipaid = $("#chittai_paid").val();
+                    // console.log(response.collectionamt);
+                    var chittai_bal = (days * chittaipaid);
+                    var chittaibal = chittai_bal - response.collectionamt;
+                    $("#chittai_bal").val(chittaibal);
+                    var balance_total = principal_bal + chittaibal;
+                    var balance_total1 = principal_bal1 + intbal;
+                    if(balance_total){
+                    $("#balance_total").val(balance_total);
+                    }else{
+                      $("#balance_total").val(balance_total1);
+                    }
+
                  }
 
             });
@@ -612,16 +671,75 @@ include("partials/_navbar.php");
                 method:"GET",
                 data:{name:name},
                 success:function(response){
-                    response = JSON.parse(response);
-                    console.log(response.customername);
-                   $("#customername").val(response.customername);
-                   $("#date").val(response.date);
+                  response = JSON.parse(response);
+                   $("#customername").val(response.customername);   //name show input bod
+                   $("#date").val(response.date);    //amount show input name
                    $("#loanamount").val(response.loanamount);
-                   $("#loanamount").val(response.loanamount);
-                  //  $("#address").val(response.address);
-                  //  $("#amount").val(response.amount);
-                   // $("#received_amount").focus();                                      
-                    // alert("@@");
+                   $("#loanamount1").val(response.loanamount);
+                   if(response.chittai){
+                   $("#principal_paid").val(response.chittai);
+                   }else{
+                    $("#principal_paid").val(response.principal);
+                   }
+                   $("#chittai_paid").val(response.chittai);
+                   $("#interestpaid").val(response.interest_paid);
+                
+                   var principal_bal = response.loanamount - response.chittai;
+                   var principal_bal1 = response.loanamount - response.principal;
+                   if(principal_bal){
+                   $("#principal_bal").val(principal_bal);
+                   }else{
+                    $("#principal_bal").val(principal_bal1);
+                   }
+
+                  
+
+                  // Calculate date difference
+                  const currentDate = new Date();
+                        var dateInput = response.date; // Date from AJAX response
+                        var inputDate = new Date(dateInput);
+
+                        if (!isNaN(inputDate.getTime())) { // Check for a valid date
+                            var differenceInMs = inputDate - currentDate;
+                            var differenceInDays = Math.ceil(differenceInMs / (1000 * 60 * 60 * 24));
+
+                            if (differenceInDays >= 0) {
+                                $("#nodays").val(` ${differenceInDays}`);
+                            } else {
+                                $("#nodays").val( `${Math.abs(differenceInDays)}`);
+                            }
+                        } else {
+                            $("#nodays").val("0");
+                        }
+
+                    var interest = response.interest;
+                    var days = $("#nodays").val();
+                    var iamnt = interest * days ;
+                    if(iamnt){ 
+                    $("#interestamnt").val(iamnt);
+                    }else{
+                      $("#interestamnt").val('0')
+                    }
+                    var intbal =iamnt - response.interest_paid;
+                    if(intbal){
+                    $("#interestbal").val(intbal);
+                    }else{
+                      $("#interestbal").val('0');
+                    }
+                    // console.log(days);
+                    var chittaipaid = $("#chittai_paid").val();
+                    // console.log(response.collectionamt);
+                    var chittai_bal = (days * chittaipaid);
+                    var chittaibal = chittai_bal - response.collectionamt;
+                    $("#chittai_bal").val(chittaibal);
+                    var balance_total = principal_bal + chittaibal;
+                    var balance_total1 = principal_bal1 + intbal;
+                    if(balance_total){
+                    $("#balance_total").val(balance_total);
+                    }else{
+                      $("#balance_total").val(balance_total1);
+                    }
+
                  }
 
             });

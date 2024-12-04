@@ -19,18 +19,20 @@ class data{
         }
     }
     public function user($table,$sdate,$edate,$vtype,$vname,$vno){
-        $sql="SELECT * FROM $table WHERE lname = '$vname' AND vouchertype = '$vtype' AND voucherno = '$vno' AND  STR_TO_DATE(date, '%Y-%m-%d') BETWEEN STR_TO_DATE('$sdate', '%Y-%m-%d') 
+        $sql = "SELECT * FROM $table where vouchertype = '$vtype' OR lname = '$vname' OR voucherno = '$vno' OR STR_TO_DATE(date, '%Y-%m-%d') BETWEEN STR_TO_DATE('$sdate', '%Y-%m-%d') 
                                              AND STR_TO_DATE('$edate', '%Y-%m-%d') 
         ORDER BY STR_TO_DATE(date, '%Y-%m-%d')";
-        $result=$this->connection->query($sql);
-        $users=[];
-        if($result->num_rows>0){
-            while($row=$result->fetch_assoc()){
+        $res = $this->connection->query($sql);
+        $users = [];
+        if($res->num_rows>0){
+            while($row=$res->fetch_assoc()){
                 $users[]=$row;
             }
         }
         return $users;
     }
+    
+    
     public function ledger($table){
         $sql = "SELECT * FROM $table";
         $res = $this->connection->query($sql);
@@ -42,110 +44,27 @@ class data{
         }
         return $ledgers;
     }
-    public function ledgerreport($table, $ledger) {
-    
-    $sql = "SELECT * FROM $table WHERE lname='$ledger'";
-    $res = $this->connection->query($sql);
-    $report=[];
-    if($res->num_rows>0){
-        while($row->fetch_assoc()){
-            $report[]=$row;
-            }
-        }
-        return $report;
-        
-    }
-    public function onlydayledge($table,$check){
-        $sql = "SELECT * FROM $table WHERE lname='$ledger' ORDER BY STR_TO_DATE(date, '%Y-%m-%d')";
-        $res = $this->connection->query($sql);
-        $report = [];
-        if($res->num_rows>0){
-            while($row->fetch_assoc()){
-                $report[]=$row;
+    public function ledgerreportday($table,$ledger){
+        $ledge = [];
+            $sql = "SELECT * FROM $table WHERE lname = '$ledger' ORDER BY date";
+            $res = $this->connection->query($sql);
+            if($res->num_rows>0){
+                while($row = $res->fetch_assoc()){
+                    $ledge[] = $row;
                 }
             }
-            return $report;
+        return $ledge;
     }
-    public function onlymonthledge($table,$check){
-        $sql = "SELECT MONTH(STR_TO_DATE(date, '%Y-%m-%d')) AS month, 
-        SUM(debit) AS total_debit, SUM(credit) AS total_credit
- FROM $table 
- WHERE lname = '$ledger' 
- GROUP BY MONTH(STR_TO_DATE(date, '%Y-%m-%d')) 
- ORDER BY month";
- $res = $this->connection->query($sql);
- $report = [];
- if($res->num_rows>0){
-     while($row->fetch_assoc()){
-         $report[]=$row;
-         }
-     }
-     return $report;
-
-    }
-    public function fdatedayeledge($table,$check,$fdate,$tdate){
-        $sql = "SELECT * 
-        FROM $table 
-        WHERE lname = '$ledger' 
-        AND STR_TO_DATE(date, '%Y-%m-%d') BETWEEN STR_TO_DATE('$fdate', '%Y-%m-%d') 
-                                             AND STR_TO_DATE('$tdate', '%Y-%m-%d') 
-        ORDER BY STR_TO_DATE(date, '%Y-%m-%d')";
+    public function ledgerreportmonth($table,$ledger){
+        $ledge1 = [];
+        $sql = "SELECT DATE_FORMAT(date, '%M') AS month_name , lname,vouchertype,voucherno,SUM(debit) AS total_debit,SUM(credit) AS total_credit FROM $table WHERE lname = '$ledger' ORDER BY date";
         $res = $this->connection->query($sql);
-        $report = [];
         if($res->num_rows>0){
-            while($row->fetch_assoc()){
-                $report[]=$row;
-                }
-            }
-            return $report;
-    }
-    public function fdatemonthledge($table,$check,$fdate,$tdate){
-        $sql = "SELECT 
-                        DATE_FORMAT(STR_TO_DATE(date, '%Y-%m-%d'), '%Y-%m') AS month,
-                        SUM(debit) AS total_debit, SUM(credit) AS total_credit
-                    FROM $table
-                    WHERE lname = '$ledger'
-                      AND STR_TO_DATE(date, '%Y-%m-%d') BETWEEN STR_TO_DATE('$fdate', '%Y-%m-%d') 
-                                                           AND STR_TO_DATE('$tdate', '%Y-%m-%d')
-                    GROUP BY DATE_FORMAT(STR_TO_DATE(date, '%Y-%m-%d'), '%Y-%m')
-                    ORDER BY month";
-                     $res = $this->connection->query($sql);
-                     $report = [];
-                     if($res->num_rows>0){
-                         while($row->fetch_assoc()){
-                             $report[]=$row;
-                             }
-                         }
-                         return $report;
-
-    }
-    public function ftledge($table,$fdate,$tdate){
-        $sql = "SELECT * 
-                    FROM $table 
-                    WHERE lname = '$ledger' 
-                      AND STR_TO_DATE(date, '%Y-%m-%d') BETWEEN STR_TO_DATE('$fdate', '%Y-%m-%d') 
-                                                           AND STR_TO_DATE('$tdate', '%Y-%m-%d') 
-                    ORDER BY STR_TO_DATE(date, '%Y-%m-%d')";
-                    $res = $this->connection->query($sql);
-                    $report = [];
-                    if($res->num_rows>0){
-                        while($row->fetch_assoc()){
-                            $report[]=$row;
-                            }
-                        }
-                        return $report;
-    }
-    public function vouchernum($table,$vname){
-        $sql = "SELECT * FROM $table WHERE lname = '$vname'";
-        $res = $this->connection->query($sql);
-        $vno = [];
-        if($res->num_rows == 1){
-            while($row=$res->fetch_assoc()){
-                $vno[]=$row['voucherno'];
+            while($row = $res->fetch_assoc()){
+                $ledge1[] = $row;
             }
         }
-        return $vno;
-
+    return $ledge1;
     }
     
 }

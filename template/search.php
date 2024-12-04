@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ERROR | E_PARSE);
 require("function.php");
 
 $db = new data();
@@ -11,12 +10,7 @@ $vtype = isset($_GET['vtype']) ? $_GET['vtype'] : null;
 $vname = isset($_GET['vname']) ? $_GET['vname'] : null;
 $vno = isset($_GET['vno']) ? $_GET['vno'] : null;
 
-// Fetch data based on the provided parameters
-if ($sdate && $edate && $vtype && $vname && $vno) {
-    $user = $db->user('tbvoucher', $sdate, $edate, $vtype, $vname, $vno);
-} else {
-    $user = []; // Default to an empty result set if parameters are missing
-}
+$user = $db->user('tbvoucher', $sdate, $edate, $vtype, $vname, $vno);
 ?>
 
 <!DOCTYPE html>
@@ -279,7 +273,7 @@ include("partials/_navbar.php");
     <label for="end_date">End Date:</label>
     <input type="date" id="end_date" name="end_date" required>
 
-   <button type="submit" class="btn btn-success mb-2">Search</button></center>
+   <!-- <button type="submit" class="btn btn-success mb-2">Search</button></center> -->
 </form>
                   <div class="table-responsive pt-3">
                   <div class="row">

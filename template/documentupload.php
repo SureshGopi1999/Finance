@@ -9,6 +9,7 @@
   <!-- base:css -->
   <link rel="stylesheet" href="vendors/typicons/typicons.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- endinject -->
   <!-- plugin css for this page -->
   <!-- End plugin css for this page -->
@@ -241,7 +242,7 @@ include("partials/_navbar.php");
                         <div class="form-group row">
                           <label class="col-sm-3 col-form-label">Loan NO</label>
                           <div class="col-sm-5">
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control" id="loanno" />
                           </div>
                         </div>
                       </div>
@@ -280,11 +281,26 @@ include("partials/_navbar.php");
                 </thead>
 
                     <ul>
-                    <li>AATHAR CARD </li>
-                    <li>CHEQUE</li>
-                    <li>E.C</li>
+                    <li>
+    AADHAR CARD 
+    <span id="aadhar">
+        <input type="file" id="aadhar-input" enctype="multipart/form-data" style="display:none;">
+        <i class="bi bi-upload" id="aadhar-icon" style="font-size: 20px; margin-left:102px;"></i>
+    </span>
+</li>
+<li>
+    CHEQUE 
+    <span id="cheque">
+        <input type="file" id="cheque-input" enctype="multipart/form-data" style="display:none;">
+        <i class="bi bi-upload" id="cheque-icon" style="font-size: 20px; margin-left:145px;"></i>
+    </span>
+</li>
+
+                    <li>E.C <span id="ec"><input type="file" id="ec-input" enctype="multipart/form-data" style="display:none;">
+                    <i class="bi bi-upload" id="ec-icon" style="font-size: 20px; margin-left:179px;"></i>
+                  </span></li>
                     <li>PAN CARD</li>
-                    <li>PORMISERY PAPER</li>
+                    <li>PROMISERY PAPER</li>
                     <li>PROPERTY DOCUMENT</li>
                     <li>RC</li>
                     </ul>
@@ -318,5 +334,70 @@ include("partials/_navbar.php");
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+  $(Document).ready(function(){
+    $("#loanno").on('input',function(e){
+      e.preventDefault();
+      var loanno = $("#loanno").val();
+      var aadhar = $("#aadhar-input").val();
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    // AADHAR CARD
+    const aadharInput = document.getElementById('aadhar-input');
+    const aadharIcon = document.getElementById('aadhar-icon');
+
+    aadharIcon.addEventListener('click', function () {
+        aadharInput.click(); 
+    });
+
+    aadharInput.addEventListener('change', function () {
+        if (aadharInput.files.length > 0) {
+            aadharIcon.classList.remove('bi-upload');
+            aadharIcon.classList.add('bi-check-circle');
+            
+            aadharIcon.style.color = 'green';
+        }
+    });
+
+    // CHEQUE
+    const chequeInput = document.getElementById('cheque-input');
+    const chequeIcon = document.getElementById('cheque-icon');
+
+    chequeIcon.addEventListener('click', function () {
+        chequeInput.click(); 
+    });
+
+    chequeInput.addEventListener('change', function () {
+        if (chequeInput.files.length > 0) {
+            
+            chequeIcon.classList.remove('bi-upload');
+            chequeIcon.classList.add('bi-check-circle');
+           
+            chequeIcon.style.color = 'green';
+        }
+    });
+
+    //EC
+   const ecInput = document.getElementById('ec-input');
+   const ecIcon = document.getElementById('ec-icon');
+
+   ecIcon.addEventListener('click', function(){
+    ecInput.click();
+   });
+
+   ecInput.addEventListener('change', function(){
+    if(ecInput.files.length > 0){
+      ecIcon.classList.remove('bi-upload');
+      ecIcon.classList.add('bi-check-circle');
+
+      ecIcon.style.color = 'green';
+    }
+   });
+});
+
+</script>
 
 </html>
