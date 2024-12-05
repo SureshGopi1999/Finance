@@ -244,6 +244,7 @@ include("partials/_navbar.php");
                           <div class="col-sm-5">
                             <input type="text" class="form-control" id="loanno" />
                           </div>
+                          <button type="submit" id="upload" class="btn-sm btn btn-success">UPLOAD</button>
                         </div>
                       </div>
                       
@@ -299,10 +300,18 @@ include("partials/_navbar.php");
                     <li>E.C <span id="ec"><input type="file" id="ec-input" enctype="multipart/form-data" style="display:none;">
                     <i class="bi bi-upload" id="ec-icon" style="font-size: 20px; margin-left:179px;"></i>
                   </span></li>
-                    <li>PAN CARD</li>
-                    <li>PROMISERY PAPER</li>
-                    <li>PROPERTY DOCUMENT</li>
-                    <li>RC</li>
+                    <li>PAN CARD <span id="pan"><input type="file" id="pan-input" enctype="multipart/form-data" style="display:none;">
+                    <i class="bi bi-upload" id="pan-icon" style="font-size: 20px; margin-left:132px;"></i>
+                  </span></li>
+                    <li>PROMISERY PAPER <span id="paper"><input type="file" id="paper-input" enctype="multipart/form-data" style="display:none;">
+                    <i class="bi bi-upload" id="paper-icon" style="font-size: 20px; margin-left:83px;"></i>
+                  </span></li>
+                    <li>PROPERTY DOCUMENT <span id="document"><input type="file" id="doc-input" enctype="multipart/form-data" style="display:none;">
+                    <i class="bi bi-upload" id="doc-icon" style="font-size: 20px; margin-left:57px;"></i>
+                  </span></li>
+                    <li>RC <span id="rc"><input type="file" id="rc-input" enctype="multipart/form-data" style="display:none;">
+                    <i class="bi bi-upload" id="rc-icon" style="font-size: 20px; margin-left:185px;"></i>
+                  </span></li>
                     </ul>
                     
                   </div>
@@ -336,13 +345,39 @@ include("partials/_navbar.php");
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
-  $(Document).ready(function(){
-    $("#loanno").on('input',function(e){
+  $(document).ready(function() {
+    $("#upload").on('click', function(e) {
       e.preventDefault();
-      var loanno = $("#loanno").val();
-      var aadhar = $("#aadhar-input").val();
+
+      // Create a FormData object
+      var formData = new FormData();
+      formData.append("loanno", $("#loanno").val());
+      formData.append("aadhar", $("#aadhar-input")[0].files[0]);
+      formData.append("cheque", $("#cheque-input")[0].files[0]);
+      formData.append("ec", $("#ec-input")[0].files[0]);
+      formData.append("pan", $("#pan-input")[0].files[0]);
+      formData.append("paper", $("#paper-input")[0].files[0]);
+      formData.append("doc", $("#doc-input")[0].files[0]);
+      formData.append("rc", $("#rc-input")[0].files[0]);
+
+      // AJAX request
+      $.ajax({
+        url: 'doc_up.php',
+        type: 'POST',
+        data: formData,
+        processData: false, // Prevent jQuery from processing the data
+        contentType: false, // Prevent jQuery from setting content type
+        success: function(response) {
+          alert(response);
+        },
+        error: function(xhr, status, error) {
+          alert("Error: " + error);
+        }
+      });
+    });
   });
 </script>
+
 <script>
   $(document).ready(function () {
     // AADHAR CARD
@@ -396,8 +431,75 @@ include("partials/_navbar.php");
       ecIcon.style.color = 'green';
     }
    });
-});
 
+   //PAN CARD
+   const panInput = document.getElementById('pan-input');
+   const panIcon = document.getElementById('pan-icon');
+
+   panIcon.addEventListener('click', function(){
+    panInput.click();
+   });
+
+   panInput.addEventListener('change', function(){
+    if(panInput.files.length > 0){
+      panIcon.classList.remove('bi-upload');
+      panIcon.classList.add('bi-check-circle');
+
+      panIcon.style.color = 'green';
+    }
+   });
+   
+   //PAPER 
+   const paperInput = document.getElementById('paper-input');
+   const paperIcon = document.getElementById('paper-icon');
+
+   paperIcon.addEventListener('click', function(){
+    paperInput.click();
+   });
+
+   paperInput.addEventListener('change', function(){
+    if(paperInput.files.length > 0){
+      paperIcon.classList.remove('bi-upload');
+      paperIcon.classList.add('bi-check-circle');
+
+      paperIcon.style.color = 'green';
+    }
+   });
+
+   //DOCUMENT
+   const docInput = document.getElementById('doc-input');
+   const docIcon = document.getElementById('doc-icon');
+
+   docIcon.addEventListener('click', function(){
+    docInput.click();
+   });
+
+   docInput.addEventListener('change', function(){
+    if(docInput.files.length > 0){
+      docIcon.classList.remove('bi-upload');
+      docIcon.classList.add('bi-check-circle');
+
+      docIcon.style.color = 'green';
+    }
+   });
+
+   //RC
+   const rcInput = document.getElementById('rc-input');
+   const rcIcon = document.getElementById('rc-icon');
+
+   rcIcon.addEventListener('click', function(){
+    rcInput.click();
+   });
+
+   rcInput.addEventListener('change', function(){
+    if(rcInput.files.length > 0){
+      rcIcon.classList.remove('bi-upload');
+      rcIcon.classList.add('bi-check-circle');
+
+      rcIcon.style.color = 'green';
+    }
+   });
+});
 </script>
 
 </html>
