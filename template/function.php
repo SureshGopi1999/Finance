@@ -137,6 +137,10 @@ public function loginsert($table,$name,$password){
         }
         return $ledger4;
     }
+    public function docupload($table,$loanno,$aadhar,$cheque,$ec,$pan,$paper,$doc,$rc){
+        $sql = "INSERT INTO $table (loanno,aadhar,cheque,ec,pan,promisery_paper,property_document,rc) VALUES ('$loanno','$aadhar','$cheque','$ec','$pan','$paper','$doc','$rc')";
+        $res = $this->connection->query($sql);
+    }
     
 }
 
