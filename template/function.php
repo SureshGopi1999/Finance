@@ -95,7 +95,7 @@ public function loginsert($table,$name,$password){
     }
     public function ledgerreportmonth($table,$ledger){
         $ledge1 = [];
-        $sql = "SELECT DATE_FORMAT(date, '%M') AS month_name , lname,vouchertype,voucherno,SUM(debit) AS total_debit,SUM(credit) AS total_credit FROM $table WHERE lname = '$ledger' ORDER BY date";
+        $sql = "SELECT DATE_FORMAT(date, '%M') AS month_name , lname,vouchertype,voucherno,SUM(debit) AS total_debit,SUM(credit) AS total_credit FROM $table WHERE lname = '$ledger' GROUP BY DATE_FORMAT(date, '%Y-%m') ORDER BY date";
         $res = $this->connection->query($sql);
         if($res->num_rows>0){
             while($row = $res->fetch_assoc()){
@@ -103,6 +103,39 @@ public function loginsert($table,$name,$password){
             }
         }
     return $ledge1;
+    }
+    public function ledgerdayftdate($table,$ledger,$fdate,$tdate){
+        $sql = "SELECT * FROM $table WHERE lname = '$ledger' AND date BETWEEN '$fdate' AND '$tdate' ORDER BY date";
+        $res = $this->connection->query($sql);
+        $ledger2=[];
+        if($res->num_rows>0){
+            while($row = $res->fetch_assoc()){
+                $ledger2[]=$row;
+            }
+        }
+        return $ledger2;
+    }
+    public function ledgermonthftdate($table,$ledger,$fdate,$tdate){
+        $sql = "SELECT  DATE_FORMAT(date, '%M') AS month_name , lname, vouchertype, voucherno, SUM(debit) AS total_debit,SUM(credit) AS total_credit FROM $table WHERE lname='$ledger' AND date BETWEEN '$fdate' AND '$tdate' GROUP BY DATE_FORMAT(date, '%Y-%m') ORDER BY date";
+        $res = $this->connection->query($sql);
+        $ledger3 = [];
+        if($res->num_rows>0){
+            while($row = $res->fetch_assoc()){
+                $ledger3[]=$row;
+            }
+        }
+        return $ledger3;
+    }
+    public function ledgerftdate($table,$ledger,$fdate,$tdate){
+        $sql = "SELECT * FROM $table WHERE lname = '$ledger' AND date BETWEEN '$fdate' AND '$tdate' ORDER BY date";
+        $res = $this->connection->query($sql);
+        $ledger4 = [];
+        if($res->num_rows>0){
+            while($row = $res->fetch_assoc()){
+                $ledger4[]=$row;
+            }
+        }
+        return $ledger4;
     }
     
 }

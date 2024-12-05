@@ -9,6 +9,12 @@ if($check == 'day'){
 $ledgers = $db->ledgerreportday('tbvoucher',$ledger);
 }elseif($check == 'month'){
   $ledgemon = $db->ledgerreportmonth('tbvoucher',$ledger);
+}elseif($check == 'day' && $fdate != null && $tdate != null){
+  $ledgedayfdate = $db->ledgerdayftdate('tbvoucher',$ledger,$fdate,$tdate);
+}elseif($check == 'month' && $fdate != null && $tdate != null){
+  $ledgemonthfdate = $db->ledgermonthftdate('tbvoucher',$ledger,$fdate,$tdate);
+}else{
+  $ledgeftdate = $db->ledgerftdate('tbvoucher',$ledger,$fdate,$tdate);
 }
 ?>  
 <!DOCTYPE html>
@@ -40,8 +46,8 @@ $ledgers = $db->ledgerreportday('tbvoucher',$ledger);
     <div class="col-12">
       <span class="d-flex align-items-center purchase-popup">
          <p>Get tons of UI components, Plugins, multiple layouts, 20+ sample pages, and more!</p> -->
-        <a href="https://bootstrapdash.com/demo/polluxui/template/index.html?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn download-button purchase-button ml-auto">Upgrade To Pro</a>
-        <i class="typcn typcn-delete-outline" id="bannerClose"></i>
+        <!-- <a href="https://bootstrapdash.com/demo/polluxui/template/index.html?utm_source=organic&utm_medium=banner&utm_campaign=free-preview" target="_blank" class="btn download-button purchase-button ml-auto">Upgrade To Pro</a> -->
+        <!-- <i class="typcn typcn-delete-outline" id="bannerClose"></i> -->
       </span>
     </div>
   </div> 
@@ -49,7 +55,7 @@ $ledgers = $db->ledgerreportday('tbvoucher',$ledger);
     <!-- partial:partials/_navbar.html -->
    
 <?php
-include("partials/_navbar.php");
+// include("partials/_navbar.php");
 ?>
 
       </div>
@@ -228,7 +234,7 @@ include("partials/_navbar.php");
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
       <?php
-      include("partials/_sidebar.php");
+      // include("partials/_sidebar.php");
       ?>
 
 
@@ -268,6 +274,8 @@ include("partials/_navbar.php");
     </thead>
     <tbody>
         <?php
+        $totalDebit = 0;
+        $totalCredit = 0;
         if($check == 'day'){
         $slno = 1;
         foreach($ledgers as $ledge){
@@ -280,6 +288,8 @@ include("partials/_navbar.php");
             echo "<td>".$ledge['debit']."</td>";
             echo "<td>".$ledge['credit']."</td>";
             echo "</tr>";
+            $totalDebit += (float) $ledge['debit'];
+            $totalCredit += (float) $ledge['credit'];
         }
       }elseif($check == 'month'){
         $slno = 1;
@@ -293,6 +303,54 @@ include("partials/_navbar.php");
           echo "<td>".$ledge['total_debit']."</td>";
           echo "<td>".$ledge['total_credit']."</td>";
           echo "</tr>";
+          $totalDebit += (float) $ledge['total_debit'];
+          $totalCredit += (float) $ledge['total_credit'];
+      }
+      }elseif($check == 'day' && $fdate != null && $tdate != null){
+        $slno = 1;
+        foreach($ledgedayfdate as $ledge){
+          echo "<tr>";
+          echo "<td>".$slno++."</td>";
+          echo "<td>".$ledge['date']."</td>";
+          echo "<td>".$ledge['lname']."</td>";
+          echo "<td>".$ledge['vouchertype']."</td>";
+          echo "<td>".$ledge['voucherno']."</td>";
+          echo "<td>".$ledge['debit']."</td>";
+          echo "<td>".$ledge['credit']."</td>";
+          echo "</tr>";
+          $totalDebit += (float) $ledge['debit'];
+          $totalCredit += (float) $ledge['credit'];
+      }
+      }elseif($check == 'month' && $fdate !=null && $tdate!=null){
+        $slno = 1;
+        foreach($ledgemonthfdate as $ledge){
+          echo "<tr>";
+          echo "<td>".$slno++."</td>";
+          echo "<td>".$ledge['month_name']."</td>";
+          echo "<td>".$ledge['lname']."</td>";
+          echo "<td>".$ledge['vouchertype']."</td>";
+          echo "<td>".$ledge['voucherno']."</td>";
+          echo "<td>".$ledge['total_debit']."</td>";
+          echo "<td>".$ledge['total_credit']."</td>";
+          echo "</tr>";
+          $totalDebit += (float) $ledge['total_debit'];
+          $totalCredit += (float) $ledge['total_credit'];
+      }
+      }else{
+        $slno = 1;
+        foreach( $ledgeftdate as $ledge){
+          echo "<tr>";
+          echo "<td>".$slno++."</td>";
+          echo "<td>".$ledge['date']."</td>";
+          echo "<td>".$ledge['lname']."</td>";
+          echo "<td>".$ledge['vouchertype']."</td>";
+          echo "<td>".$ledge['voucherno']."</td>";
+          echo "<td>".$ledge['debit']."</td>";
+          echo "<td>".$ledge['credit']."</td>";
+          echo "</tr>";
+
+          $totalDebit += (float) $ledge['debit'];
+          $totalCredit += (float) $ledge['credit'];
       }
       }
 ?>
@@ -303,9 +361,9 @@ include("partials/_navbar.php");
             <td></td>
             <td></td>
             <td>Total:</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
+            <td></td>
+            <td><?php echo $totalDebit;?></td>
+            <td><?php echo $totalCredit;?></td>
         </tr>
         <tr>
             <td></td>
@@ -313,16 +371,16 @@ include("partials/_navbar.php");
             <td></td>
             <td>To Opening Balance:</td>
             <td></td>
-            <td>1</td>
+            <td></td>
             <td></td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td>By Claiming Balance:</td>
+            <td>By Closing Balance:</td>
             <td></td>
-            <td>3</td>
+            <td></td>
             <td></td>
         </tr>
     </tbody>
